@@ -100,9 +100,6 @@ CREATE TABLE `Orders` (
 --
 
 INSERT INTO `Orders` (`id`, `user_id`, `fullname`, `email`, `phone_number`, `address`, `note`, `order_date`, `status`, `total_money`) VALUES
-(1, 3, 'TRAN VAN DIEP', 'tranvandiep.it@gmail.com', '0123456789', 'Ha Noi', 'ABC', '2021-10-22 16:43:54', 1, 3),
-(2, 2, 'TRAN VAN A', 'abc@gmail.com', '123123123', 'Ha Noi', 'ABC', '2021-10-21 16:43:54', 2, 2),
-(3, 1, 'TRAN VAN DIEP', 'tranvandiep.it@gmail.com', '', 'XOM GIAO, YEN TRI', '', '2021-10-27 12:42:16', 1, 4800000);
 
 -- --------------------------------------------------------
 

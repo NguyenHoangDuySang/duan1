@@ -126,16 +126,16 @@
         <?php if ($user != null): ?>
           <!-- Hiển thị trạng thái đơn hàng nếu đã đăng nhập -->
           <li class="nav-item">
-            <a class="nav-link" href="../../webbanhang1/status.php">Trạng thái đơn hàng</a>
+            <a class="nav-link" href="../../duan1/status.php">Trạng thái đơn hàng</a>
           </li>
           <!-- Hiển thị nút Đăng xuất -->
           <li class="nav-item">
-            <a class="nav-link" href="../../webbanhang1/admin/authen/logout.php">Đăng xuất</a>
+            <a class="nav-link" href="../../duan1/admin/authen/logout.php">Đăng xuất</a>
           </li>
         <?php else: ?>
           <!-- Hiển thị nút Đăng nhập nếu chưa đăng nhập -->
           <li class="nav-item">
-            <a class="nav-link" href="../../webbanhang1/admin/authen/login.php">Đăng nhập</a>
+            <a class="nav-link" href="../../duan1/admin/authen/login.php">Đăng nhập</a>
           </li>
         <?php endif; ?>
       </ul>
