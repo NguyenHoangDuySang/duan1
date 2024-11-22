@@ -49,7 +49,7 @@ $lastestItems = executeResult($sql);
 				<input type="number" name="num" class="form-control" step="1" value="1" style="max-width: 90px;border: solid #e0dede 1px; border-radius: 0px;" onchange="fixCartNum()">
 				<button class="btn btn-light" style="border: solid #e0dede 1px; border-radius: 0px;" onclick="addMoreCart(1)">+</button>
 			</div>
-			<button class="btn btn-success" style="margin-top: 20px; width: 100%; border-radius: 0px; font-size: 30px;  ..." >
+			<button class="btn btn-success" style="margin-top: 20px; width: 100%; border-radius: 0px; font-size: 30px;"  onclick="addCart(<?=$product['id']?>, $('[name=num]').val())" >
 				<i class="bi bi-cart-plus-fill"></i> THÊM VÀO GIỎ HÀNG
 			</button>
 
@@ -72,7 +72,7 @@ $lastestItems = executeResult($sql);
 					<p style="font-weight: bold;">'.$item['category_name'].'</p>
 					<a href="detail.php?id='.$item['id'].'"><p style="font-weight: bold;">'.$item['title'].'</p></a>
 					<p style="color: red; font-weight: bold;">'.number_format($item['discount']).' VND</p>
-					<p><button class="btn btn-success" ...." style="width: 100%; border-radius: 0px;"><i class="bi bi-cart-plus-fill"></i> Thêm giỏ hàng</button></p>
+					<p><button class="btn btn-success" onclick="addCart('.$item['id'].', 1)" style="width: 100%; border-radius: 0px;"><i class="bi bi-cart-plus-fill"></i> Thêm giỏ hàng</button></p>
 				</div>';
 		}
 	?>
