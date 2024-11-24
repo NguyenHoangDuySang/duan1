@@ -29,9 +29,9 @@ if (!empty($_POST)) {
 
 
         if ($userExist['role_id'] == 1) {
-            header('Location: ../../../../../webbanhang1/admin');
+            header('Location: ../../../../../duan1/admin');
         } elseif ($userExist['role_id'] == 2) {
-            header('Location: ../../../../../webbanhang1/index.php');
+            header('Location: ../../../../../duan1/index.php');
         } else {
             header('Location: ../unknown_role.php');
         }

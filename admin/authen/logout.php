@@ -12,6 +12,6 @@ if($user != null) {
 	execute($sql);
 	setcookie('token', '', time() - 100, '/');
 }
-header('Location: ../../../../../webbanhang1/index.php');
+header('Location: ../../../../../duan1/index.php');
 
 session_destroy();
