@@ -60,40 +60,6 @@ $lastestItems = executeResult($sql);
 </div>
 
 <!-- Danh Muc San Pham -->
-<?php
-$count = 0;
-foreach($menuItems as $item) {
-    $sql = "SELECT Product.*, Category.name as category_name FROM Product 
-            LEFT JOIN Category ON Product.category_id = Category.id 
-            WHERE Product.category_id = ".$item['id']." 
-            ORDER BY Product.updated_at DESC LIMIT 0,4";
-    $items = executeResult($sql);
-    if($items == null || count($items) < 4) continue;
-?>
-<div style="background-color: <?=($count++%2 == 0)?'#f7f9fa':''?>;">
-    <div class="container my-5">
-        <h2 class="text-center mb-4"><?=$item['name']?></h2>
-        <div class="row">
-            <?php foreach($items as $pItem) { ?>
-            <div class="col-md-3 col-sm-6 mb-4">
-                <div class="card product-item h-100">
-                    <a href="detail.php?id=<?=$pItem['id']?>"><img class="card-img-top" src="<?=$pItem['thumbnail']?>" alt="<?=$pItem['title']?>" style="height: 220px; object-fit: cover;"></a>
-                    <div class="card-body">
-                        <h6 class="card-title text-muted"><?=$pItem['category_name']?></h6>
-                        <a href="detail.php?id=<?=$pItem['id']?>" class="text-dark">
-                            <h5 class="card-title font-weight-bold"><?=$pItem['title']?></h5>
-                        </a>
-                        <p class="card-text text-danger font-weight-bold"><?=number_format($pItem['discount'])?> VND</p>
-                    </div>
-                    <div class="card-footer p-0">
-                        
-                    </div>
-                </div>
-            </div>
-            <?php } ?>
-        </div>
-    </div>
-</div>
-<?php } ?>
+
 
 <?php require_once('layouts/footer.php'); ?>
