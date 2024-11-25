@@ -127,16 +127,8 @@ if ($user['role_id'] == 2) {
                     <ion-icon name="menu-outline"></ion-icon>
                 </div>
 
-                <div class="search">
-                    <label>
-                        <input type="text" placeholder="Search here">
-                        <ion-icon name="search-outline"></ion-icon>
-                    </label>
-                </div>
-
-                <div class="user">
-                    <img src="<?= $baseUrl ?>../assets/photos/customer01.jpg" alt="">
-                </div>
+                
+                
             </div>
 
 

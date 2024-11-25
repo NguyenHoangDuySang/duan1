@@ -51,8 +51,10 @@ $lastestItems = executeResult($sql);
                         <h5 class="card-title font-weight-bold"><?=$item['title']?></h5>
                     </a>
                     <p class="card-text text-danger font-weight-bold"><?=number_format($item['discount'])?> VND</p>
+                    
                 </div>
 
+                <p><button class="btn btn-success" onclick="addCart('<?=$item['id']?>', 1)" style="width: 100%; border-radius: 0px;"><i class="bi bi-cart-plus-fill"></i> Thêm giỏ hàng</button></p>
             </div>
         </div>
         <?php } ?>
@@ -95,5 +97,6 @@ foreach($menuItems as $item) {
     </div>
 </div>
 <?php } ?>
+
 
 <?php require_once('layouts/footer.php'); ?>
