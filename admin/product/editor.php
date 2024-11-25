@@ -1,12 +1,13 @@
 <?php
-ob_start(); 
+ob_start(); //Kích hoạt bộ đệm đầu ra. Điều này cho phép gửi dữ liệu ra trình duyệt sau khi mã PHP được xử lý hoàn toàn.
 	$title = 'Thêm/Sửa Sản Phẩm';
 	$baseUrl = '../';
 	require_once('../layouts/header.php');
 
+	// Biến khởi tạo ($id, $thumbnail,...): Dùng để lưu dữ liệu của sản phẩm hiện tại khi chỉnh sửa hoặc thêm mới.
 	$id = $thumbnail = $title = $price = $discount = $category_id = $description = '';
 	require_once('form_save.php');
-
+// Lấy dữ liệu từ cơ sở dữ liệu (bảng Product) và điền vào các trường tương ứng.
 	$id = getGet('id');
 	if($id != '' && $id > 0) {
 		$sql = "select * from Product where id = '$id' and deleted = 0";
