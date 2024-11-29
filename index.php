@@ -89,7 +89,7 @@ foreach($menuItems as $item) {
                         <p class="card-text text-danger font-weight-bold"><?=number_format($pItem['discount'])?> VND</p>
                     </div>
                     <div class="card-footer p-0">
-                        
+                    <p><button class="btn btn-success" onclick="addCart('<?=$item['id']?>', 1)" style="width: 100%; border-radius: 0px;"><i class="bi bi-cart-plus-fill"></i> Thêm giỏ hàng</button></p>
                     </div>
                 </div>
             </div>

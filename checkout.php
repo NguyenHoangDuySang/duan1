@@ -61,7 +61,7 @@ $user = isset($_SESSION['user']) ? $_SESSION['user'] : null;
                             <button class="btn btn-success" style="border-radius: 0px; font-size: 26px; width: 100%;">THANH TOÁN</button>
                         </a>
                     <?php } else { ?>
-                        <a class="btn btn-success" style="border-radius: 0px; font-size: 26px; width: 100%;" href="../../webbanhang1/admin/authen/login.php">Đăng nhập để mua hàng</a>
+                        <a class="btn btn-success" style="border-radius: 0px; font-size: 26px; width: 100%;" href="../../duan1/admin/authen/login.php">Đăng nhập để mua hàng</a>
                     <?php } ?>
                 </div>
             </div>
