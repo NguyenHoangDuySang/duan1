@@ -8,7 +8,7 @@ if(!empty($_POST)){ //kiem tra xem co du lieu day len hay k
     //validate
     if(empty($fullname)||empty($email) ||empty($pwd)||strlen($pwd)<6){
         $msg = 'Vui lòng điền đầy đủ thông tin và đảm bảo mật khẩu có ít nhất 6 ký tự';
-    }else{
+    }else{ 
         //validate thanh cong
         $useExist = executeResult("select * from User where email = '$email'",true); // lay email tu db 
         // so sanh neu email khac rong

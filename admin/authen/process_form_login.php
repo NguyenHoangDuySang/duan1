@@ -1,7 +1,7 @@
 <?php
 $fullname = $email = $msg = '';
 
-if (!empty($_POST)) {
+if (!empty($_POST)) {  
     $email = getPost('email');
     $pwd = getPost('password');
     $pwd = getSecurityMD5($pwd); // na hoa 
