@@ -32,35 +32,30 @@ if($user!= null){
                 <h4 style="color: red; text-align: center;"><?=$msg?></h4>
 
                 <form method="post" onsubmit="return validateForm()">
-                    <!-- Name Field -->
                     <div class="mb-4">
                         <label class="block text-gray-700 text-sm font-bold mb-2" for="usr">Họ tên</label>
                         <input name="fullname" type="text" id="usr" placeholder="Nhập đầy đủ họ và tên"
                             class="w-full px-3 py-2 text-gray-700 border rounded-lg focus:outline-none focus:border-blue-500" value="<?=$fullname?>">
                         <p id="nameError" class="text-red-500 text-xs mt-1 hidden">*Họ tên không được để trống</p>
                     </div>
-                    <!-- Email Field -->
                     <div class="mb-4">
                         <label class="block text-gray-700 text-sm font-bold mb-2" for="email">Email</label>
                         <input name="email" type="email" id="email" placeholder="Nhập email của bạn"
                             class="w-full px-3 py-2 text-gray-700 border rounded-lg focus:outline-none focus:border-blue-500" value="<?=$email?>">
                         <p id="emailError" class="text-red-500 text-xs mt-1 hidden">*Email không được để trống</p>
                     </div>
-                    <!-- Password Field -->
                     <div class="mb-4">
                         <label class="block text-gray-700 text-sm font-bold mb-2" for="password">Mật khẩu</label>
                         <input name="password" type="password" id="pwd" placeholder="Nhập mật khẩu"
                             class="w-full px-3 py-2 text-gray-700 border rounded-lg focus:outline-none focus:border-blue-500">
                         <p id="passwordError" class="text-red-500 text-xs mt-1 hidden">*Mật khẩu không được để trống và ít nhất 6 ký tự</p>
                     </div>
-                    <!-- Confirm Password Field -->
                     <div class="mb-4">
                         <label class="block text-gray-700 text-sm font-bold mb-2" for="confirm-password">Xác nhận mật khẩu</label>
                         <input type="password" id="confirmation_pwd" placeholder="Nhập lại mật khẩu"
                             class="w-full px-3 py-2 text-gray-700 border rounded-lg focus:outline-none focus:border-blue-500">
                         <p id="confirmPasswordError" class="text-red-500 text-xs mt-1 hidden">*Bạn phải xác nhận mật khẩu và khớp với mật khẩu đã nhập</p>
                     </div>
-                    <!-- Terms and Conditions -->
                     <div class="mb-4">
                         <label class="inline-flex items-center">
                             <input type="checkbox" id="terms" class="form-checkbox h-5 w-5 text-blue-600">
@@ -69,7 +64,6 @@ if($user!= null){
                         </label>
                         <p id="termsError" class="text-red-500 text-xs mt-1 hidden">*Bạn cần đồng ý với điều khoản</p>
                     </div>
-                    <!-- Submit Button -->
                     <div class="mb-4">
                         <button type="submit"
                             class="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg focus:outline-none focus:shadow-outline">
