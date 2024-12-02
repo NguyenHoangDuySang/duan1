@@ -18,13 +18,13 @@ $lastestItems = executeResult($sql);
   <!-- Slideshow images -->
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <img src="https://intphcm.com/data/upload/dung-luong-banner-thoi-trang.jpg" class="d-block w-100" alt="Los Angeles">
+      <img src="https://bizweb.dktcdn.net/100/485/982/themes/918620/assets/slider_1.jpg?1729658810016" class="d-block w-100" alt="Los Angeles">
     </div>
     <div class="carousel-item">
-      <img src="https://t004.gokisoft.com/uploads/2021/07/2-s-1634-banner-web.jpg" class="d-block w-100" alt="Chicago">
+      <img src="https://bizweb.dktcdn.net/100/485/982/themes/918620/assets/slider_3.jpg?1729658810016" class="d-block w-100" alt="Chicago">
     </div>
     <div class="carousel-item">
-      <img src="https://t004.gokisoft.com/uploads/2021/07/3-s-1634-banner-web.jpg" class="d-block w-100" alt="New York">
+      <img src="https://bizweb.dktcdn.net/100/485/982/themes/918620/assets/slider_4.jpg?1729658810016" class="d-block w-100" alt="New York">
     </div>
   </div>
 
