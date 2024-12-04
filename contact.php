@@ -1,7 +1,9 @@
 <?php 
-require_once('layouts/header.php');
+require_once('layouts/header.php'); // Nhúng file header để hiển thị giao diện đầu trang và các thành phần chung
 // var_dump($_POST);
-if(!empty($_POST)) {
+if(!empty($_POST)) {    // Xử lý khi có dữ liệu được gửi lên từ form thông qua phương thức POST
+
+// Lấy giá trị từ các trường input trong form
 	$first_name = getPost('first_name');
 	$last_name = getPost('last_name');
 	$email = getPost('email');
@@ -10,11 +12,13 @@ if(!empty($_POST)) {
 	$note = getPost('note');
 	$created_at = $updated_at = date('Y-m-d H:i:s');
 
+    // Tạo câu lệnh SQL để thêm phản hồi vào bảng Feedback
 	$sql = "insert into FeedBack(firstname, lastname, email, phone_number, subject_name, note, status, created_at, updated_at) values('$first_name', '$last_name', '$email', '$phone_number', '$subject_name', '$note', 0, '$created_at', '$updated_at')";
 	// echo $sql;
-	execute($sql);
+	execute($sql);// Thực thi câu lệnh SQL
 }
 ?>
+<!-- Form gửi phản hồi -->
 <div class="container" style="margin-top: 20px; margin-bottom: 20px;">
 	<form method="post">
 	<div class="row">
