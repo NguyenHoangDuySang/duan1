@@ -32,13 +32,17 @@
 					</span>
 				</button>
 			</div>
-
+            <!-- bay ve clien-->
+            <div>
+                <a href="<?= BASE_URL ?>">Website</a>
+            </div>
 			<div class="d-flex align-items-center">
 				<!-- Fullscreen Toggle -->
 				<div class="ms-1 header-item d-none d-sm-flex">
 					<button type="button" class="btn btn-icon btn-topbar btn-ghost-secondary rounded-circle" data-toggle="fullscreen" title="Toggle Fullscreen">
 						<i class='bx bx-fullscreen fs-22'></i>
 					</button>
+                    
 				</div>
 
 				<!-- Light/Dark Mode Toggle -->
@@ -53,7 +57,7 @@
 					<button type="button" class="btn" id="page-header-user-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 						<span class="d-flex align-items-center">
 							
-							<img class="rounded-circle header-profile-user" src="<?=$_SESSION['user']['anh_dai_dien']  ?>" alt="User Avatar">
+							<img class="rounded-circle header-profile-user" src="./assets/image/duysang.png" alt="User Avatar">
 								<span class="text-start ms-xl-2">
 									<span class="d-none d-xl-inline-block ms-1 fw-medium user-name-text"><?= $_SESSION['user_admin'] ?></span>
 									<span class="d-none d-xl-block ms-1 fs-12 user-name-sub-text"></span>

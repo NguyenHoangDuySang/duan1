@@ -22,4 +22,72 @@ class AdminDanhMuc {
             echo"lỗi" .$e ->getMessage();
         }
     }
+    public function insertDanhMuc($ten_danh_muc, $Mo_ta){
+        try {
+            $sql = 'INSERT INTO  danh_mucs (ten_danh_muc, Mo_ta)
+                    VALUES (:ten_danh_muc, :Mo_ta)';
+
+            $stmt = $this ->conn ->prepare($sql);
+
+            $stmt ->execute([
+                ':ten_danh_muc' => $ten_danh_muc,
+                ':Mo_ta' =>  $Mo_ta
+            ]);
+
+            return true;
+        } catch (Exception $e) {
+            echo"lỗi" .$e ->getMessage();
+        }
+    }
+    
+    public function getDetailDanhMuc($id){
+        try {
+            $sql = 'SELECT * FROM danh_mucs WHERE id = :id ';
+
+            $stmt = $this ->conn ->prepare($sql);
+
+            $stmt ->execute([
+                ':id' => $id    
+            ]);
+
+            return $stmt ->fetch();
+        } catch (Exception $e) {
+            echo"lỗi" .$e ->getMessage();
+        }
+    }
+
+    public function updateDanhMuc($id,$ten_danh_muc, $Mo_ta){
+        try {
+            $sql = 'UPDATE danh_mucs SET ten_danh_muc = :ten_danh_muc , Mo_ta = :Mo_ta WHERE id = :id';
+
+            $stmt = $this ->conn ->prepare($sql);
+
+            $stmt ->execute([
+                ':ten_danh_muc' => $ten_danh_muc,
+                ':Mo_ta' =>  $Mo_ta,
+                ':id' => $id
+            ]);
+
+            return true;
+        } catch (Exception $e) {
+            echo"lỗi" .$e ->getMessage();
+        }
+    }
+
+    public function destroyDanhMuc($id){
+        try {
+            $sql = 'DELETE FROM danh_mucs WHERE id = :id';
+
+            $stmt = $this ->conn ->prepare($sql);
+
+            $stmt ->execute([
+                ':id' => $id
+            ]);
+
+            return true;
+        } catch (Exception $e) {
+            echo"lỗi" .$e ->getMessage();
+        }
+    }
+    
 }

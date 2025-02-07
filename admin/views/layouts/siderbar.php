@@ -40,7 +40,7 @@
             <div id="two-column-menu">
             </div >
             <ul class="navbar-nav" id="navbar-nav">
-                <li class="menu-title"><span data-key="t-menu">Quản lý Astore</span></li>
+                <li class="menu-title"><span data-key="t-menu">Quản lý Bán Nước Hoa HSH</span></li>
                 <li class="nav-item">
                     <a class="nav-link menu-link" href="?act=/">
                         <i class="ri-dashboard-2-line"></i> <span data-key="t-dashboards">Thống kê</span>
@@ -53,7 +53,7 @@
                     <div class="collapse menu-dropdown" id="sidebarDanhMuc">
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
-                                <a href="?act=danh-mucs" class="nav-link" data-key="t-sweet-alerts">
+                                <a href="?act=danh-muc" class="nav-link" data-key="t-sweet-alerts">
                                     Danh sách
                                 </a>
                             </li>
