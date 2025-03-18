@@ -9,6 +9,7 @@ function connectDB() {
 
     try {
         $conn = new PDO("mysql:host=$host;port=$port;dbname=$dbname", DB_USERNAME, DB_PASSWORD);
+        $conn->exec("SET NAMES utf8mb4");
 
         // cài đặt chế độ báo lỗi là xử lý ngoại lệ
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -21,3 +22,8 @@ function connectDB() {
         echo ("Connection failed: " . $e->getMessage());
     }
 }
+
+
+// them file 
+// xoa file 
+// debug
