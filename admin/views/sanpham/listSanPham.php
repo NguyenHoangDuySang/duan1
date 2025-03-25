@@ -68,9 +68,9 @@
                    <td><?= $key + 1 ?></td>
                    <td> <?= $sanPham['ten_san_pham'] ?></td>
                    <td> 
-                    <img src="<?= BASE_URL . $sanPham['hinh_anh'] ?>" style="width:100px" alt=""
+                    <a href="<?=BASE_URL_ADMIN . '?act=chi-tiet-san-pham&id_san_pham=' . $sanPham['id'] ?>"><img src="<?= BASE_URL . $sanPham['hinh_anh'] ?>" style="width:100px" alt=""
                     onerror="this.onerror=null; this.src='https://1557691689.e.cdneverest.net/fast/1325x0/filters:format(webp)/static.5sfashion.vn/storage/product_color/zx59gbFvSuBvjej3DzJjZV7cqtNlfX36.webp'"
-                    >
+                    ></a>
                   </td>
                   <td> <?= number_format($sanPham['gia_san_pham'], 0, ',', '.') ?> VND</td>
 

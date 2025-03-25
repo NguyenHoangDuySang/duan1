@@ -8,10 +8,12 @@ require_once '../commons/function.php'; // Hàm hỗ trợ
 // Require toàn bộ file Controllers
 require_once 'controllers/AdminDanhMucControllers.php';
 require_once 'controllers/AdminSanPhamControllers.php';
+require_once 'controllers/AdminDonHangControllers.php';
 
 // Require toàn bộ file Models
 require_once './models/AdminDanhMuc.php';
 require_once './models/AdminSanPham.php';
+require_once './models/AdminDonHang.php';
 
 
 // Route
@@ -38,5 +40,12 @@ match ($act) {
     'sua-album-anh-san-pham' => (new AdminSanPhamControllers())->postEditAnhSanPham(),
     'xoa-san-pham' => (new AdminSanPhamControllers())->deleteSanPham(),
     'chi-tiet-san-pham' => (new AdminSanPhamControllers())->detailSanPham(),
+
+     // Route don hang
+     'don-hang' => (new AdminDonHangControllers())->danhSachDonHang(),
+    // 'form-sua-don-hang' => (new AdminDonHangControllers())->formEditDonHang(),
+    // 'sua-don-hang' => (new AdminDonHangControllers())->postEditDonHang(),
+    // 'xoa-don-hang' => (new AdminDonHangControllers())->deleteDonHang(),
+    // 'chi-tiet-don-hang' => (new AdminDonHangControllers())->detailDonHang(),
 
 };
