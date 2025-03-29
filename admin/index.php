@@ -43,9 +43,9 @@ match ($act) {
 
      // Route don hang
      'don-hang' => (new AdminDonHangControllers())->danhSachDonHang(),
-    // 'form-sua-don-hang' => (new AdminDonHangControllers())->formEditDonHang(),
-    // 'sua-don-hang' => (new AdminDonHangControllers())->postEditDonHang(),
+    'form-sua-don-hang' => (new AdminDonHangControllers())->formEditDonHang(),
+    'sua-don-hang' => (new AdminDonHangControllers())->postEditDonHang(),
     // 'xoa-don-hang' => (new AdminDonHangControllers())->deleteDonHang(),
-    // 'chi-tiet-don-hang' => (new AdminDonHangControllers())->detailDonHang(),
+    'chi-tiet-don-hang' => (new AdminDonHangControllers())->detailDonHang(),
 
 };

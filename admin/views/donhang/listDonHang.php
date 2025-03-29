@@ -67,7 +67,7 @@
                    <td> <?= $donHang['ma_don_hang'] ?></td>
                    <td> <?= $donHang['ten_nguoi_nhan'] ?></td>
                    <td> <?= $donHang['sdt_nguoi_nhan'] ?></td>
-                   <td> <?= $donHang['ngay_dat'] ?></td>
+                   <td> <?= date("d/m/Y ", strtotime($donHang['ngay_dat'])) ?></td>
                    <td> <?= number_format($donHang['tong_tien'], 0, ',', '.') ?> VND</td>
                    <td> <?= $donHang['ten_trang_thai'] ?></td>
                    

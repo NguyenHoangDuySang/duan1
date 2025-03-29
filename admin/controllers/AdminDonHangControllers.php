@@ -15,26 +15,43 @@ class AdminDonHangControllers{
         require_once './views/donhang/listDonHang.php';
     }
 
+    // detai don hang 
+
+    public function detailDonHang(){
+        $don_hang_id = $_GET['id_don_hang'];
+        
+        // lay thong tin don hang o bang don hang 
+        $donHang = $this->modelDonHang->getDetailDonHang($don_hang_id);
+
+        // lay danh sach san pham da dat cua don hang o chi tiet don hang 
+        $sanPhamDonHang = $this->modelDonHang->getListSpDonHang($don_hang_id);
+
+        $listTrangThaiDonHang = $this->modelDonHang->getAllTrangThaiDonHang();
+
+        
+        require_once './views/donhang/detailDonHang.php';
+
+    }
+
    
 
 //     // // sua 
 
-//     public function formEditSanPham(){
-//         // ham nay dung de hien thi form nhap 
-//         // lay ra thong tin cua san pham can sua 
-//         $id = $_GET['id_san_pham'];
-//         $sanPham= $this->modelSanPham->getDetailSanPham($id);
-//         $listAnhSanPham = $this->modelSanPham->getListAnhSanPham($id);
-//         $listDanhMuc = $this->modelDanhMuc->getAllDanhMuc();
-//        if($sanPham){
-//         require_once './views/sanpham/editSanPham.php';
-//         deleteSessionError();
-//        }else{
-//         header("Location: " . BASE_URL_ADMIN . '?act=san-pham');
-//         exit();
-//        }
+    public function formEditDonHang(){
+        // ham nay dung de hien thi form nhap 
+        // lay ra thong tin cua san pham can sua 
+        $id = $_GET['id_don_hang'];
+        $donHang= $this->modelDonHang->getDetailDonHang($id);
+        $listTrangThaiDonHang = $this->modelDonHang->getAllTrangThaiDonHang();
+       if($donHang){
+        require_once './views/donhang/editDonHang.php';
+        deleteSessionError();
+       }else{
+        header("Location: " . BASE_URL_ADMIN . '?act=don-hang');
+        exit();
+       }
 
-//     }
+    }
 
 
 //    //  sua 
