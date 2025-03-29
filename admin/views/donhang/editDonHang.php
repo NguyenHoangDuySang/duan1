@@ -46,40 +46,40 @@
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form action="<?=BASE_URL_ADMIN . '?act=sua-danh-muc' ?>" method="POST">
+              <form action="<?=BASE_URL_ADMIN . '?act=sua-don-hang' ?>" method="POST">
                 
-                <input type="text" name="id"  value="<?= $donHang['id']?>" hidden>
+                <input type="text" name="don_hang_id"  value="<?= $donHang['id']?>" hidden>
 
                 <div class="card-body">
                   <div class="form-group">
                     <label >Tên người nhận</label>
                     <input type="text" class="form-control" name="ten_nguoi_nhan" value="<?= $donHang['ten_nguoi_nhan']?>" placeholder="Nhập tên người nhận">
-                    <?php if (isset($errors['ten_nguoi_nhan'])) { ?>
-                        <p class="text-danger"><?= $errors['ten_nguoi_nhan'] ?></p>
+                    <?php if (isset($_SESSION['error']['ten_nguoi_nhan'])) { ?>
+                        <p class="text-danger"><?= $_SESSION['error']['ten_nguoi_nhan'] ?></p>
                     <?php } ?>
                   </div>
 
                   <div class="form-group">
                     <label >Số điện thoại</label>
                     <input type="text" class="form-control" name="sdt_nguoi_nhan" value="<?= $donHang['sdt_nguoi_nhan']?>" placeholder="Nhập số điện thoại">
-                    <?php if (isset($errors['sdt_nguoi_nhan'])) { ?>
-                        <p class="text-danger"><?= $errors['sdt_nguoi_nhan'] ?></p>
+                    <?php if (isset($_SESSION['error']['sdt_nguoi_nhan'])) { ?>
+                        <p class="text-danger"><?= $_SESSION['error']['sdt_nguoi_nhan'] ?></p>
                     <?php } ?>
                   </div>
 
                   <div class="form-group">
                     <label >Email người nhận</label>
                     <input type="email" class="form-control" name="email_nguoi_nhan" value="<?= $donHang['email_nguoi_nhan']?>" placeholder="Nhập email">
-                    <?php if (isset($errors['email_nguoi_nhan'])) { ?>
-                        <p class="text-danger"><?= $errors['email_nguoi_nhan'] ?></p>
+                    <?php if (isset($_SESSION['error']['email_nguoi_nhan'])) { ?>
+                        <p class="text-danger"><?= $_SESSION['error']['email_nguoi_nhan'] ?></p>
                     <?php } ?>
                   </div>
             
                   <div class="form-group">
                     <label >Địa người nhận</label>
                     <input type="text" class="form-control" name="dia_chi_nguoi_nhan" value="<?= $donHang['dia_chi_nguoi_nhan']?>" placeholder="Nhập địa chỉ">
-                    <?php if (isset($errors['dia_chi_nguoi_nhan'])) { ?>
-                        <p class="text-danger"><?= $errors['dia_chi_nguoi_nhan'] ?></p>
+                    <?php if (isset($_SESSION['error']['dia_chi_nguoi_nhan'])) { ?>
+                        <p class="text-danger"><?= $_SESSION['error']['dia_chi_nguoi_nhan'] ?></p>
                     <?php } ?>
                   </div>
             

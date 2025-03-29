@@ -10,10 +10,10 @@
       <!-- Sidebar user (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="./assets/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
-        </div>
+          <img src="./assets/dist/img/IMG_0879.jpg" class="img-circle elevation-2" alt="User Image">
+        </div><br>
         <div class="info">
-          <a href="#" class="d-block">DUY SANG</a>
+          <a href="https://www.facebook.com/photo/?fbid=1373410143455212&set=a.203052093824362" class="d-block">DUY SANG</a>
         </div>
       </div>
 
@@ -27,7 +27,7 @@
                with font-awesome or any other icon font library -->
 
                <li class="nav-item">
-            <a href="../widgets.html" class="nav-link">
+            <a href="#" class="nav-link">
             <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
               Dashboard

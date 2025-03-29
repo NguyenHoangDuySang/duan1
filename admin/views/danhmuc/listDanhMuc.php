@@ -66,11 +66,11 @@
                    <td><?= $danhMuc['mo_ta'] ?></td>
                    <td>
                     <a href="<?=BASE_URL_ADMIN . '?act=form-sua-danh-muc&id_danh_muc=' . $danhMuc['id'] ?>">
-                    <button class="btn btn-outline-warning text-dark">Sửa</button>
+                    <button class="btn btn-outline-warning text-dark"><i class="fas fa-tools"></i></button>
                     </a>
                     <a href="<?=BASE_URL_ADMIN . '?act=xoa-danh-muc&id_danh_muc=' . $danhMuc['id'] ?>" 
                     onclick="return confirm('Bạn có đồng ý xoá hay không ? ')">
-                    <button class="btn btn-outline-danger text-dark">Xoá</button>
+                    <button class="btn btn-outline-danger text-dark"><i class="far fa-trash-alt"></i></button>
                     </a>
                    </td>
                   </tr>
