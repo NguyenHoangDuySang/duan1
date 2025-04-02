@@ -99,6 +99,75 @@ class AdminTaiKhoan{
             echo "Lỗi" . $e ->getMessage();
         }
     }
+    
+
+    /// resetPasswor 
+
+    public function resetPassword( $id, $mat_khau){
+        try {
+            $sql = ' UPDATE tai_khoans 
+                     SET 
+                     mat_khau = :mat_khau 
+                     WHERE id = :id';
+
+            $stmt = $this->conn->prepare($sql);
+
+            $stmt->execute([
+                ':mat_khau' => $mat_khau,
+                ':id' => $id // Thêm dòng này để tránh lỗi thiếu tham số
+                
+                
+            ]);
+
+            
+            return true;
+
+        } catch (Exception $e) {
+            echo "Lỗi" . $e ->getMessage();
+        }
+    }
+    
+
+     // updateTaiKhoan  khach hang 
+
+     public function updateKhachHang( $id, $ho_ten, $email, $so_dien_thoai, $ngay_sinh, $gioi_tinh, $dia_chi, $trang_thai){
+        try {
+            $sql = ' UPDATE tai_khoans 
+                     SET 
+                     ho_ten = :ho_ten,
+                     email = :email,
+                     so_dien_thoai = :so_dien_thoai,
+                     ngay_sinh = :ngay_sinh,
+                     gioi_tinh = :gioi_tinh,
+                     dia_chi = :dia_chi,
+                     trang_thai = :trang_thai
+                     
+                     WHERE id = :id';
+
+            $stmt = $this->conn->prepare($sql);
+
+            $stmt->execute([
+                ':ho_ten' => $ho_ten,
+                ':email' => $email,
+                ':so_dien_thoai' => $so_dien_thoai,
+                ':ngay_sinh' => $ngay_sinh,
+                ':gioi_tinh' => $gioi_tinh,
+                ':dia_chi' => $dia_chi,
+                ':trang_thai' => $trang_thai,
+                ':id' => $id // Thêm dòng này để tránh lỗi thiếu tham số
+                
+                
+            ]);
+
+            
+            return true;
+
+        } catch (Exception $e) {
+            echo "Lỗi" . $e ->getMessage();
+        }
+    }
+    
+
 
 
 

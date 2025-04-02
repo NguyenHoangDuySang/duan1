@@ -132,90 +132,33 @@ public function getAllTrangThaiDonHang(){
     }
 
 
-//     ///   
+//     
+public function getDonHangFromKhachHang($id){
+    try {
+        $sql = 'SELECT don_hangs.*, trang_thai_don_hangs.ten_trang_thai
+        FROM don_hangs
+        INNER JOIN trang_thai_don_hangs ON don_hangs.trang_thai_id = trang_thai_don_hangs.id
+        WHERE don_hangs.tai_khoan_id = :id
+        ';
+        
+
+        $stmt = $this->conn->prepare($sql);
+
+        $stmt->execute([':id'=>$id]);
+
+        return $stmt->fetchAll();
+
+    } catch (Exception $e) {
+        echo "Lỗi" . $e ->getMessage();
+    }
+}
 
 
-//     public function getDetailAnhDonHang($id){
-//         try {
-//             $sql = 'SELECT * FROM hinh_anh_don_hangs WHERE id = :id';
 
-//             $stmt = $this->conn->prepare($sql);
 
-//             $stmt->execute([':id' => $id]);
 
-//             return $stmt->fetch();
 
-//         } catch (Exception $e) {
-//             echo "Lỗi" . $e ->getMessage();
-//         }
-//     }
 
-// ////
- 
-// public function updateAnhDonHang($id,$new_file){
-//     try {
-//         $sql = ' UPDATE hinh_anh_don_hangs 
-//                  SET 
-//                  link_hinh_anh = :new_file
-                 
-                 
-//                  WHERE id = :id';
-
-//         $stmt = $this->conn->prepare($sql);
-
-//         $stmt->execute([
-//             ':new_file' => $new_file,
-//             ':id' => $id,
-            
-            
-//         ]);
-
-//         // lay id san pham vua them 
-//         return true;
-
-//     } catch (Exception $e) {
-//         echo "Lỗi" . $e ->getMessage();
-//     }
-// }
-
-// /// xoa anh 
-
-// public function destroyAnhDonHang($id){
-//     try {
-//         $sql = 'DELETE FROM hinh_anh_don_hangs WHERE id = :id';
-
-//         $stmt = $this->conn->prepare($sql);
-
-//         $stmt->execute([
-//             'id' => $id
-            
-//         ]);
-
-//         return true;
-
-//     } catch (Exception $e) {
-//         echo "Lỗi" . $e ->getMessage();
-//     }
-// }
-//     // xoa tat ca 
-
-//     public function destroyDonHang($id){
-//         try {
-//             $sql = 'DELETE FROM don_hangs WHERE id = :id';
-    
-//             $stmt = $this->conn->prepare($sql);
-    
-//             $stmt->execute([
-//                 'id' => $id
-                
-//             ]);
-    
-//             return true;
-    
-//         } catch (Exception $e) {
-//             echo "Lỗi" . $e ->getMessage();
-//         }
-//     }
 
 
    

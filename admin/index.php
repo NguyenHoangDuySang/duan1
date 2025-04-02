@@ -51,8 +51,17 @@ match ($act) {
     'chi-tiet-san-pham' => (new AdminSanPhamControllers())->detailSanPham(),
 
 
+
+    // Route binh luan 
+   
+    'update-trang-thai-binh-luan' => (new AdminSanPhamControllers())->updateTrangThaiBinhLuan(),
+
+
+
+
+
      // Route don hang
-     'don-hang' => (new AdminDonHangControllers())->danhSachDonHang(),
+    'don-hang' => (new AdminDonHangControllers())->danhSachDonHang(),
     'form-sua-don-hang' => (new AdminDonHangControllers())->formEditDonHang(),
     'sua-don-hang' => (new AdminDonHangControllers())->postEditDonHang(),
     // 'xoa-don-hang' => (new AdminDonHangControllers())->deleteDonHang(),
@@ -61,11 +70,21 @@ match ($act) {
 
      // Route tai khoan 
        // tai khoan admin 
-       'list-tai-khoan-quan-tri' =>(new AdminTaiKhoanControllers())->danhSachAdmin(),
-       'form-them-quan-tri' =>(new AdminTaiKhoanControllers())->fromAddQuanTri(),
-       'them-quan-tri' =>(new AdminTaiKhoanControllers())->postAddQuanTri(),
-       'form-sua-quan-tri' =>(new AdminTaiKhoanControllers())->fromEditQuanTri(),
-       'sua-quan-tri' =>(new AdminTaiKhoanControllers())->postEditQuanTri(),
+        'list-tai-khoan-quan-tri' =>(new AdminTaiKhoanControllers())->danhSachAdmin(),
+        'form-them-quan-tri' =>(new AdminTaiKhoanControllers())->fromAddQuanTri(),
+        'them-quan-tri' =>(new AdminTaiKhoanControllers())->postAddQuanTri(),
+        'form-sua-quan-tri' =>(new AdminTaiKhoanControllers())->fromEditQuanTri(),
+        'sua-quan-tri' =>(new AdminTaiKhoanControllers())->postEditQuanTri(),
+
+        // Route password tai khoan 
+        'reset_password' =>(new AdminTaiKhoanControllers())->resetPassword(),
+
+
+        // tai khoan client  
+        'list-tai-khoan-khach-hang' =>(new AdminTaiKhoanControllers())->danhSachKhachHang(),
+        'form-sua-khach-hang' =>(new AdminTaiKhoanControllers())->fromEditKhachHang(),
+        'sua-khach-hang' =>(new AdminTaiKhoanControllers())->postEditKhachHang(),
+        'chi-tiet-khach-hang' =>(new AdminTaiKhoanControllers())->detailKhachHang(),
 
 
 
