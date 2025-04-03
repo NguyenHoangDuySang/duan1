@@ -23,6 +23,11 @@
           <i class="fas fa-expand-arrows-alt"></i>
         </a>
       </li>
-     
+      <li class="nav-item" style="  width: 40px; height: 40px; display: flex;  align-items: center; justify-content: center; border-radius: 50%; background: #f8f9fa; color: #333; transition: 0.3s;">
+    <a class="nav-link" href="<?= BASE_URL_ADMIN . '?act=logout-admin' ?>" style="color: inherit; display: flex; align-items: center; justify-content: center;" onclick="return confirm('Bạn có muốn đăng xuất tài khoản?')">
+        <i class="fas fa-sign-out-alt"></i>
+    </a>
+</li>
+
     </ul>
   </nav>

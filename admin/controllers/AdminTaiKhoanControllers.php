@@ -152,8 +152,8 @@ class AdminTaiKhoanControllers{
     public function resetPassword(){
         $tai_khoan_id = $_GET['id_quan_tri'];
         $tai_khoan = $this->modelTaiKhoan->getDetailTaiKhoan($tai_khoan_id);
-         // dat tai khoan mac dinh    sang2004@
-         $password = password_hash('sang2004', PASSWORD_BCRYPT);
+         // dat tai khoan mac dinh    Sang2004
+         $password = password_hash('Sang2004', PASSWORD_BCRYPT);
 
         $status = $this->modelTaiKhoan->resetPassword($tai_khoan_id, $password);
         if ($status && $tai_khoan['chuc_vu_id'] == 1 ) {
@@ -272,6 +272,54 @@ class AdminTaiKhoanControllers{
 
         require_once './views/taikhoan/khachhang/detailKhachHang.php';
     }
+
+    /// login 
+    public function formLogin(){
+        require_once './views/auth/formLogin.php';
+        deleteSessionError();
+    }
+
+    ///
+    public function login(){
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            
+            // lay email va mat khau gui len tu form 
+            $email = $_POST['email'];
+            $password = $_POST['password'];
+
+            // var_dump($email); die;
+            // xu ly kiem tra thong tin dang nhap 
+            $user = $this->modelTaiKhoan->checkLogin($email, $password);
+
+            if ($user == $email) {  /// dang nhap thanh cong 
+                // luu thong tin vao session
+                $_SESSION['user_admin']  = $user;
+                header("Location: " . BASE_URL_ADMIN);
+                exit();
+            } else {
+                // neu ma loi thi luu loi vao session 
+                $_SESSION['error'] = $user;
+
+                $_SESSION['flash'] = true;
+                
+                header("Location: " . BASE_URL_ADMIN . '?act=login-admin');
+                exit();
+
+            }
+
+        }
+    }
+
+    /// logout  adnin
+
+    public function logout(){
+            if(isset($_SESSION['user_admin'])){
+                unset($_SESSION['user_admin']);
+                header("Location: " . BASE_URL_ADMIN . '?act=login-admin');
+                exit();
+            }
+        }
+
 
 
 }
