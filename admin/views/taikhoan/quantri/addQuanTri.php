@@ -26,7 +26,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Quản lý danh mục sản phẩm</h1>
+            <h1>Quản lý tài khoản admin</h1>
           </div>
          
         </div>
@@ -42,27 +42,37 @@
 
           <div class="card card-primary">
               <div class="card-header">
-                <h3 class="card-title">Sửa danh mục sản phẩm: <?= $danhMuc['ten_danh_muc'] ?></h3>
+                <h3 class="card-title">Thêm tài khoản admin</h3>
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form action="<?=BASE_URL_ADMIN . '?act=sua-danh-muc' ?>" method="POST">
-                
-                <input type="text" name="id"  value="<?= $danhMuc['id']?>" hidden>
-
+              <form action="<?=BASE_URL_ADMIN . '?act=them-quan-tri' ?>" method="POST">
                 <div class="card-body">
-                  <div class="form-group">
-                    <label >Tên danh mục</label>
-                    <input type="text" class="form-control" name="ten_danh_muc" value="<?= $danhMuc['ten_danh_muc']?>" placeholder="Nhập tên danh mục">
-                    <?php if (isset($errors['ten_danh_muc'])) { ?>
-                        <p class="text-danger"><?= $errors['ten_danh_muc'] ?></p>
-                    <?php } ?>
-                  </div>
-            
-                  <div class="form-group">
-                    <label >Mô tả</label>
-                    <textarea name="mo_ta" id="" class="form-control" rows="10"  placeholder="Nhập mô tả"><?= $danhMuc['ten_danh_muc']?></textarea>
-                  </div>
+                    <div class="form-group col-12">
+                        <label >Họ và tên</label>
+                        <input type="text" class="form-control" name="ho_ten" placeholder="Nhập họ và tên">
+                        <?php if (isset($_SESSION['error']['ho_ten'])) { ?>
+                            <p class="text-danger"><?= $_SESSION['error']['ho_ten'] ?></p>
+                        <?php } ?>
+                    </div>
+
+                    <div class="form-group col-12">
+                        <label >Email</label>
+                        <input type="email" class="form-control" name="email" placeholder="Nhập email">
+                        <?php if (isset($_SESSION['error']['email'])) { ?>
+                            <p class="text-danger"><?= $_SESSION['error']['email'] ?></p>
+                        <?php } ?>
+                    </div>
+
+                    <div class="form-group col-12">
+                        <label >Số điện thoại</label>
+                        <input type="text" class="form-control" name="so_dien_thoai" placeholder="Nhập so dien thoai">
+                        <?php if (isset($_SESSION['error']['so_dien_thoai'])) { ?>
+                            <p class="text-danger"><?= $_SESSION['error']['so_dien_thoai'] ?></p>
+                        <?php } ?>
+                    </div>
+
+                   
                  
                  
                   
