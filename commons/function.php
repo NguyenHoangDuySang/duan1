@@ -9,6 +9,7 @@ function connectDB() {
 
     try {
         $conn = new PDO("mysql:host=$host;port=$port;dbname=$dbname", DB_USERNAME, DB_PASSWORD);
+        $conn->exec("SET NAMES utf8mb4");
 
         // cài đặt chế độ báo lỗi là xử lý ngoại lệ
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -21,3 +22,52 @@ function connectDB() {
         echo ("Connection failed: " . $e->getMessage());
     }
 }
+
+
+// them file 
+function uploadFile($file,$folderUpload){
+    $pathStorage = $folderUpload . time() . $file['name'];
+
+    $from = $file['tmp_name'];
+    $to = PATH_ROOT . $pathStorage;
+
+    if (move_uploaded_file($from,$to)) {
+       return $pathStorage;
+    }
+    return null;
+}
+
+
+// xoa file 
+function deleteFile($file){
+    $pathDelete = PATH_ROOT . $file;
+    if (file_exists($pathDelete)) {
+       unlink($pathDelete);
+    }
+}
+
+// xoa sessioon sau khi load trang 
+function deleteSessionError(){
+    if (isset($_SESSION['flash'])) {
+        // huy session sau khi da tai trang 
+        unset($_SESSION['flash']);
+        session_unset();
+        session_destroy();
+    }
+}
+
+/// upload update album anh 
+
+function uploadFileAlbum($file,$folderUpload,$key){
+    $pathStorage = $folderUpload . time() . $file['name'][$key];
+
+    $from = $file['tmp_name'][$key];
+    $to = PATH_ROOT . $pathStorage;
+
+    if (move_uploaded_file($from,$to)) {
+       return $pathStorage;
+    }
+    return null;
+}
+
+// debug
