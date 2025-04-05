@@ -5,6 +5,11 @@ session_start();
 require_once '../commons/env.php'; // Khai báo biến môi trường
 require_once '../commons/function.php'; // Hàm hỗ trợ
 
+$act = $_GET['act'] ?? '/';
+if ($act !== 'login-admin' && $act !== 'check-login-admin' && $act !== 'logout-admin') {
+    checkLoginAdmin(); // chặn quyền truy cập khi đã logout ra
+}
+
 // Require toàn bộ file Controllers
 require_once 'controllers/AdminDanhMucControllers.php';
 require_once 'controllers/AdminSanPhamControllers.php';
@@ -16,6 +21,7 @@ require_once 'controllers/AdminTaiKhoanControllers.php';
 require_once './models/AdminDanhMuc.php';
 require_once './models/AdminSanPham.php';
 require_once './models/AdminDonHang.php';
+require_once './models/AdminDashboard.php';
 require_once './models/AdminTaiKhoan.php';
 
 
@@ -51,13 +57,9 @@ match ($act) {
     'chi-tiet-san-pham' => (new AdminSanPhamControllers())->detailSanPham(),
 
 
-
     // Route binh luan 
    
     'update-trang-thai-binh-luan' => (new AdminSanPhamControllers())->updateTrangThaiBinhLuan(),
-
-
-
 
 
      // Route don hang
@@ -85,6 +87,11 @@ match ($act) {
         'form-sua-khach-hang' =>(new AdminTaiKhoanControllers())->fromEditKhachHang(),
         'sua-khach-hang' =>(new AdminTaiKhoanControllers())->postEditKhachHang(),
         'chi-tiet-khach-hang' =>(new AdminTaiKhoanControllers())->detailKhachHang(),
+
+        // route login 
+        'login-admin' =>(new AdminTaiKhoanControllers())->formLogin(),
+        'check-login-admin' =>(new AdminTaiKhoanControllers())->login(),
+        'logout-admin' =>(new AdminTaiKhoanControllers())->logout(),
 
 
 

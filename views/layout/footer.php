@@ -1,125 +1,140 @@
- <!-- Footer Type 1 -->
- <footer class="footer footer_type_1">
-    <div class="footer-middle container">
-      <div class="row row-cols-lg-5 row-cols-2">
-        <div class="footer-column footer-store-info col-12 mb-4 mb-lg-0">
-          <div class="logo">
-            <a href="index.html">
-              <img src="../images/logo.png" alt="Uomo" class="logo__image d-block">
-            </a>
-          </div><!-- /.logo -->
-          <p class="footer-address">1418 River Drive, Suite 35 Cottonhall, CA 9622 United States</p>
+  <!-- Scroll to top start -->
+  <div class="scroll-top not-visible">
+        <i class="fa fa-angle-up"></i>
+    </div>
+    <!-- Scroll to Top End -->
 
-          <p class="m-0">
-            <strong class="fw-medium">sale@uomo.com</strong>
-          </p>
-          <p>
-            <strong class="fw-medium">+1 246-345-0695</strong>
-          </p>
+    <!-- footer area start -->
+    <footer class="footer-widget-area">
+        <div class="footer-top section-padding">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3 col-md-6">
+                        <div class="widget-item">
+                            <div class="widget-title">
+                                <div class="widget-logo">
+                                    <a href="index.html">
+                                        <img src="assets/img/logo/logoSTP.png" alt="brand logo" style="height: 60px;">
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="widget-body">
+                                <p>Chúng tôi là một nhóm các nhà thiết kế và phát triển tạo ra wordpress, shopify, Opencart chất lượng cao</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="widget-item">
+                            <h6 class="widget-title">Liên hệ với chúng tôi</h6>
+                            <div class="widget-body">
+                                <address class="contact-block">
+                                    <ul>
+                                        <li><i class="pe-7s-home"></i>Hưng Hà - Thái Bình</li>
+                                        <li><i class="pe-7s-mail"></i> <a href="nguyenduysang28032004@gmail.com">nguyenduysang@gmail.com</a></li>
+                                        <li><i class="pe-7s-call"></i> <a href="tel:(012)800456789987">0392443762</a></li>
+                                    </ul>
+                                </address>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="widget-item">
+                            <h6 class="widget-title">Thông tin</h6>
+                            <div class="widget-body">
+                                <ul class="info-list">
+                                    <li><a href="#">Về chúng tôi</a></li>
+                                    <li><a href="#">Thông tin giao hàng</a></li>
+                                    <li><a href="#">Chính sách</a></li>
+                                    <li><a href="#">Điều khoản & Điều kiện</a></li>
+                                    <li><a href="#">liên hệ với chúng tôi</a></li>
+                                    <li><a href="#">site map</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="widget-item">
+                            <h6 class="widget-title">Follow Us</h6>
+                            <div class="widget-body social-link">
+                                <a href="#"><i class="fa fa-facebook"></i></a>
+                                <a href="#"><i class="fa fa-twitter"></i></a>
+                                <a href="#"><i class="fa fa-instagram"></i></a>
+                                <a href="#"><i class="fa fa-youtube"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row align-items-center mt-20">
+                    <div class="col-md-6">
+                        <div class="newsletter-wrapper">
+                            <h6 class="widget-title-text">Signup for newsletter</h6>
+                            <form class="newsletter-inner" id="mc-form">
+                                <input type="email" class="news-field" id="mc-email" autocomplete="off" placeholder="Enter your email address">
+                                <button class="news-btn" id="mc-submit">Subscribe</button>
+                            </form>
+                            <!-- mail-chimp-alerts Start -->
+                            <div class="mailchimp-alerts">
+                                <div class="mailchimp-submitting"></div><!-- mail-chimp-submitting end -->
+                                <div class="mailchimp-success"></div><!-- mail-chimp-success end -->
+                                <div class="mailchimp-error"></div><!-- mail-chimp-error end -->
+                            </div>
+                            <!-- mail-chimp-alerts end -->
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="footer-payment">
+                            <img src="assets/img/payment.png" alt="payment method">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="copyright-text text-center">
+                            <p>&copy; 2025 <b>Nguyễn hoàng duy Sáng </b> <i class="fa fa-heart text-danger"></i> by <a href="https://hasthemes.com/"><b>STP</b></a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- footer area end -->
+      <!-- JS
+============================================ -->
 
-          <ul class="social-links list-unstyled d-flex flex-wrap mb-0">
-            <li>
-              <a href="https://facebook.com/" class="footer__social-link d-block">
-                <svg class="svg-icon svg-icon_facebook" width="9" height="15" viewBox="0 0 9 15" xmlns="http://www.w3.org/2000/svg"><use href="#icon_facebook" /></svg>
-              </a>
-            </li>
-            <li>
-              <a href="https://twitter.com/" class="footer__social-link d-block">
-                <svg class="svg-icon svg-icon_twitter" width="14" height="13" viewBox="0 0 14 13" xmlns="http://www.w3.org/2000/svg"><use href="#icon_twitter" /></svg>
-              </a>
-            </li>
-            <li>
-              <a href="https://instagram.com/" class="footer__social-link d-block">
-                <svg class="svg-icon svg-icon_instagram" width="14" height="13" viewBox="0 0 14 13" xmlns="http://www.w3.org/2000/svg"><use href="#icon_instagram" /></svg>
-              </a>
-            </li>
-            <li>
-              <a href="https://youtube.com/" class="footer__social-link d-block">
-                <svg class="svg-icon svg-icon_youtube" width="16" height="11" viewBox="0 0 16 11" xmlns="http://www.w3.org/2000/svg"><path d="M15.0117 1.8584C14.8477 1.20215 14.3281 0.682617 13.6992 0.518555C12.5234 0.19043 7.875 0.19043 7.875 0.19043C7.875 0.19043 3.19922 0.19043 2.02344 0.518555C1.39453 0.682617 0.875 1.20215 0.710938 1.8584C0.382812 3.00684 0.382812 5.46777 0.382812 5.46777C0.382812 5.46777 0.382812 7.90137 0.710938 9.07715C0.875 9.7334 1.39453 10.2256 2.02344 10.3896C3.19922 10.6904 7.875 10.6904 7.875 10.6904C7.875 10.6904 12.5234 10.6904 13.6992 10.3896C14.3281 10.2256 14.8477 9.7334 15.0117 9.07715C15.3398 7.90137 15.3398 5.46777 15.3398 5.46777C15.3398 5.46777 15.3398 3.00684 15.0117 1.8584ZM6.34375 7.68262V3.25293L10.2266 5.46777L6.34375 7.68262Z"/></svg>
-              </a>
-            </li>
-            <li>
-              <a href="https://pinterest.com/" class="footer__social-link d-block">
-                <svg class="svg-icon svg-icon_pinterest" width="14" height="15" viewBox="0 0 14 15" xmlns="http://www.w3.org/2000/svg"><use href="#icon_pinterest" /></svg>
-              </a>
-            </li>
-          </ul>
-        </div><!-- /.footer-column -->
+    <!-- Modernizer JS -->
+    <script src="assets/js/vendor/modernizr-3.6.0.min.js"></script>
+    <!-- jQuery JS -->
+    <script src="assets/js/vendor/jquery-3.6.0.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="assets/js/vendor/bootstrap.bundle.min.js"></script>
+    <!-- slick Slider JS -->
+    <script src="assets/js/plugins/slick.min.js"></script>
+    <!-- Countdown JS -->
+    <script src="assets/js/plugins/countdown.min.js"></script>
+    <!-- Nice Select JS -->
+    <script src="assets/js/plugins/nice-select.min.js"></script>
+    <!-- jquery UI JS -->
+    <script src="assets/js/plugins/jqueryui.min.js"></script>
+    <!-- Image zoom JS -->
+    <script src="assets/js/plugins/image-zoom.min.js"></script>
+    <!-- Images loaded JS -->
+    <script src="assets/js/plugins/imagesloaded.pkgd.min.js"></script>
+    <!-- mail-chimp active js -->
+    <script src="assets/js/plugins/ajaxchimp.js"></script>
+    <!-- contact form dynamic js -->
+    <script src="assets/js/plugins/ajax-mail.js"></script>
+    <!-- google map api -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCfmCVTjRI007pC1Yk2o2d_EhgkjTsFVN8"></script>
+    <!-- google map active js -->
+    <script src="assets/js/plugins/google-map.js"></script>
+    <!-- Main JS -->
+    <script src="assets/js/main.js"></script>
+</body>
 
-        <div class="footer-column footer-menu mb-4 mb-lg-0">
-          <h5 class="sub-menu__title text-uppercase">Company</h5>
-          <ul class="sub-menu__list list-unstyled">
-            <li class="sub-menu__item"><a href="about.html" class="menu-link menu-link_us-s">About Us</a></li>
-            <li class="sub-menu__item"><a href="about.html" class="menu-link menu-link_us-s">Careers</a></li>
-            <li class="sub-menu__item"><a href="about.html" class="menu-link menu-link_us-s">Affiliates</a></li>
-            <li class="sub-menu__item"><a href="blog_list1.html" class="menu-link menu-link_us-s">Blog</a></li>
-            <li class="sub-menu__item"><a href="contact.html" class="menu-link menu-link_us-s">Contact Us</a></li>
-          </ul>
-        </div><!-- /.footer-column -->
-        <div class="footer-column footer-menu mb-4 mb-lg-0">
-          <h5 class="sub-menu__title text-uppercase">Shop</h5>
-          <ul class="sub-menu__list list-unstyled">
-            <li class="sub-menu__item"><a href="shop2.html" class="menu-link menu-link_us-s">New Arrivals</a></li>
-            <li class="sub-menu__item"><a href="shop3.html" class="menu-link menu-link_us-s">Accessories</a></li>
-            <li class="sub-menu__item"><a href="shop4.html" class="menu-link menu-link_us-s">Men</a></li>
-            <li class="sub-menu__item"><a href="shop5.html" class="menu-link menu-link_us-s">Women</a></li>
-            <li class="sub-menu__item"><a href="shop1.html" class="menu-link menu-link_us-s">Shop All</a></li>
-          </ul>
-        </div><!-- /.footer-column -->
-        <div class="footer-column footer-menu mb-4 mb-lg-0">
-          <h5 class="sub-menu__title text-uppercase">Help</h5>
-          <ul class="sub-menu__list list-unstyled">
-            <li class="sub-menu__item"><a href="about.html" class="menu-link menu-link_us-s">Customer Service</a></li>
-            <li class="sub-menu__item"><a href="account_dashboard.html" class="menu-link menu-link_us-s">My Account</a></li>
-            <li class="sub-menu__item"><a href="store_location.html" class="menu-link menu-link_us-s">Find a Store</a></li>
-            <li class="sub-menu__item"><a href="terms.html" class="menu-link menu-link_us-s">Legal & Privacy</a></li>
-            <li class="sub-menu__item"><a href="contact.html" class="menu-link menu-link_us-s">Contact</a></li>
-            <li class="sub-menu__item"><a href="about.html" class="menu-link menu-link_us-s">Gift Card</a></li>
-          </ul>
-        </div><!-- /.footer-column -->
-        <div class="footer-column footer-newsletter col-12 mb-4 mb-lg-0">
-          <h5 class="sub-menu__title text-uppercase">Subscribe</h5>
-          <p>Be the first to get the latest news about trends, promotions, and much more!</p>
-          <form action="https://uomo-html.flexkitux.com/Demo1/index.html" class="footer-newsletter__form position-relative bg-body">
-            <input class="form-control border-white" type="email" name="email" placeholder="Your email address">
-            <input class="btn-link fw-medium bg-white position-absolute top-0 end-0 h-100" type="submit" value="JOIN">
-          </form>
 
-          <div class="mt-4 pt-3">
-            <strong class="fw-medium">Secure payments</strong>
-            <p class="mt-2">
-              <img loading="lazy" src="../images/payment-options.png" alt="Acceptable payment gateways" class="mw-100">
-            </p>
-          </div>
-        </div><!-- /.footer-column -->
-      </div><!-- /.row-cols-5 -->
-    </div><!-- /.footer-middle container -->
-
-    <div class="footer-bottom container">
-      <div class="d-block d-md-flex align-items-center">
-        <span class="footer-copyright me-auto">©2023 Uomo</span>
-        <div class="footer-settings d-block d-md-flex align-items-center">
-          <div class="d-flex align-items-center">
-            <label for="footerSettingsLanguage" class="me-2 text-secondary">Language</label>
-            <select id="footerSettingsLanguage" class="form-select form-select-sm bg-transparent" aria-label="Default select example" name="store-language">
-              <option class="footer-select__option" selected>United Kingdom | English</option>
-              <option class="footer-select__option" value="1">United States | English</option>
-              <option class="footer-select__option" value="2">German</option>
-              <option class="footer-select__option" value="3">French</option>
-              <option class="footer-select__option" value="4">Swedish</option>
-            </select>
-          </div>
-
-          <div class="d-flex align-items-center">
-            <label for="footerSettingsCurrency" class="ms-md-3 me-2 text-secondary">Currency</label>
-            <select id="footerSettingsCurrency" class="form-select form-select-sm bg-transparent" aria-label="Default select example" name="store-language">
-              <option selected>$ USD</option>
-              <option value="1">£ GBP</option>
-              <option value="2">€ EURO</option>
-            </select>
-          </div>
-        </div><!-- /.footer-settings -->
-      </div><!-- /.d-flex -->
-    </div><!-- /.footer-bottom container -->
-  </footer><!-- /.footer footer_type_1 -->
-  <!-- End Footer Type 1 -->
+<!-- Mirrored from htmldemo.net/corano/corano/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 03 Apr 2025 16:39:03 GMT -->
+</html>

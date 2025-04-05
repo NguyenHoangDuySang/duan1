@@ -52,7 +52,7 @@ function deleteSessionError(){
         // huy session sau khi da tai trang 
         unset($_SESSION['flash']);
         session_unset();
-        session_destroy();
+        // session_destroy();
     }
 }
 
@@ -71,3 +71,16 @@ function uploadFileAlbum($file,$folderUpload,$key){
 }
 
 // debug
+
+/// check login 
+function checkLoginAdmin(){
+    if (!isset($_SESSION['user_admin'])) {
+        header("Location: " . BASE_URL_ADMIN . '?act=login-admin');
+        exit();
+    }
+}
+
+/// 
+function formatPrice($price){
+    return number_format($price, 0, ',', '.');
+}
