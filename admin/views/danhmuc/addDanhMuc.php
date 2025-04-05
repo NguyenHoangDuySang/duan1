@@ -52,7 +52,11 @@
                     <label >Tên danh mục</label>
                     <input type="text" class="form-control" name="ten_danh_muc" placeholder="Nhập tên danh mục">
                     <?php if (isset($errors['ten_danh_muc'])) { ?>
+<<<<<<< HEAD
                         <p class="text-danger"><?= $errors['ten_danh_muc']?></p>
+=======
+                        <p class="text-danger"><?= $errors['ten_danh_muc'] ?></p>
+>>>>>>> 54b06ddf91861fe13fe9807058c4889baa2db4d4
                     <?php } ?>
                   </div>
             

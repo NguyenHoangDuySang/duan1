@@ -25,6 +25,7 @@ function connectDB() {
 
 
 // them file 
+<<<<<<< HEAD
 function uploadFile($file,$folderUpload){
     $pathStorage = $folderUpload . time() . $file['name'];
 
@@ -70,4 +71,7 @@ function uploadFileAlbum($file,$folderUpload,$key){
     return null;
 }
 
+=======
+// xoa file 
+>>>>>>> 54b06ddf91861fe13fe9807058c4889baa2db4d4
 // debug

@@ -1,5 +1,6 @@
 <?php 
 class AdminSanPham{
+<<<<<<< HEAD
     public $conn; 
     public function __construct(){
         $this->conn = connectDB();
@@ -341,5 +342,8 @@ public function updateTrangThaiBinhLuan($id,$trang_thai){
 
 
 
+=======
+    
+>>>>>>> 54b06ddf91861fe13fe9807058c4889baa2db4d4
 }
 ?>

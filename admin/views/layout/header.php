@@ -3,8 +3,13 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+<<<<<<< HEAD
   <title>Du an 1 | nhom 5</title>
 <link rel="stylesheet" href="./assets/dist/css/ok.css">
+=======
+  <title>AdminLTE 3 | DataTables</title>
+
+>>>>>>> 54b06ddf91861fe13fe9807058c4889baa2db4d4
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome -->

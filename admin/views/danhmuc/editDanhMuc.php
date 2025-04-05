@@ -42,7 +42,11 @@
 
           <div class="card card-primary">
               <div class="card-header">
+<<<<<<< HEAD
                 <h3 class="card-title">Sửa danh mục sản phẩm: <?= $danhMuc['ten_danh_muc'] ?></h3>
+=======
+                <h3 class="card-title">Sửa danh mục sản phẩm</h3>
+>>>>>>> 54b06ddf91861fe13fe9807058c4889baa2db4d4
               </div>
               <!-- /.card-header -->
               <!-- form start -->

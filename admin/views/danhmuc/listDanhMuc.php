@@ -66,11 +66,19 @@
                    <td><?= $danhMuc['mo_ta'] ?></td>
                    <td>
                     <a href="<?=BASE_URL_ADMIN . '?act=form-sua-danh-muc&id_danh_muc=' . $danhMuc['id'] ?>">
+<<<<<<< HEAD
                     <button class="btn btn-outline-warning text-dark"><i class="fas fa-tools"></i></button>
                     </a>
                     <a href="<?=BASE_URL_ADMIN . '?act=xoa-danh-muc&id_danh_muc=' . $danhMuc['id'] ?>" 
                     onclick="return confirm('Bạn có đồng ý xoá hay không ? ')">
                     <button class="btn btn-outline-danger text-dark"><i class="far fa-trash-alt"></i></button>
+=======
+                    <button class="btn btn-outline-warning text-dark">Sửa</button>
+                    </a>
+                    <a href="<?=BASE_URL_ADMIN . '?act=xoa-danh-muc&id_danh_muc=' . $danhMuc['id'] ?>" 
+                    onclick="return confirm('Bạn có đồng ý xoá hay không ? ')">
+                    <button class="btn btn-outline-danger text-dark">Xoá</button>
+>>>>>>> 54b06ddf91861fe13fe9807058c4889baa2db4d4
                     </a>
                    </td>
                   </tr>
