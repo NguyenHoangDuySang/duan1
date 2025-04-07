@@ -24,6 +24,8 @@ class SanPham{
     }
 
     ///
+
+    
     public function getDetailSanPham($id){
         try {
             $sql = 'SELECT san_phams.*, danh_mucs.ten_danh_muc

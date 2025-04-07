@@ -71,11 +71,18 @@ function uploadFileAlbum($file,$folderUpload,$key){
 }
 
 // debug
-
-/// check login 
+ 
+/// check login admin
 function checkLoginAdmin(){
     if (!isset($_SESSION['user_admin'])) {
         header("Location: " . BASE_URL_ADMIN . '?act=login-admin');
+        exit();
+    }
+}
+/// check login client
+function checkLoginClient(){
+    if (!isset($_SESSION['user_client'])) {
+        header("Location: " . BASE_URL. '?act=login-client');
         exit();
     }
 }
