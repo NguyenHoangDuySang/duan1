@@ -15,6 +15,7 @@ require_once './controllers/HomeController.php';
 require_once './models/SanPham.php';
 require_once './models/TaiKhoan.php';
 require_once './models/GioHang.php';
+require_once './models/DonHang.php';
 
 
 
@@ -32,8 +33,20 @@ match ($act) {
     '/'                 => (new HomeController())->home(),
 
     'chi-tiet-san-pham' => (new HomeController())->chiTietSanPham(),
-    // Route for the new product page
     'san-pham' => (new HomeController())->sanPham(),
+    'lien-he' => (new HomeController())->lienHe(),
+    'send-contact' => (new HomeController())->sendContact(),
+    'them-binh-luan' => (new HomeController())->themBinhLuan(),
+    
+
+
+    /// route thanh toan
+    'thanh-toan' => (new HomeController())->thanhToan(),
+    'xu-ly-thanh-toan' => (new HomeController())->postThanhToan(),
+    'lich-su-mua-hang' => (new HomeController())->lichSuMuaHang(),
+    'chi-tiet-mua-hang' => (new HomeController())->chiTietMuaHang(),
+    'huy-don-hang' => (new HomeController())->huyDonHang(),
+
 
 
 
@@ -49,6 +62,9 @@ match ($act) {
     //  route login
     'login' => (new HomeController())->formLogin(),
     'check-login' => (new HomeController())->postLogin(),
+    'dang-ky' => (new HomeController())->dangKy(),
+    'tai-khoan' => (new HomeController())->taiKhoanCaNhan(),
+
    
     
 

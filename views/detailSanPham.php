@@ -74,25 +74,7 @@
 }
 </style>
 <main>
-        <!-- breadcrumb area start -->
-        <div class="breadcrumb-area">
-            <div class="container">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="breadcrumb-wrap">
-                            <nav aria-label="breadcrumb">
-                                <ul class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="<?= BASE_URL ?>"><i class="fa fa-home"></i></a></li>
-                                    <li class="breadcrumb-item"><a href="shop.html">Sản phẩm</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page">Chi tiết sản phẩm</li>
-                                </ul>
-                            </nav>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- breadcrumb area end -->
+       
 
         <!-- page main wrapper start -->
         <div class="shop-main-wrapper section-padding pb-0">
@@ -155,6 +137,7 @@
                                         </div>
                                         <p class="pro-desc"> <?= $sanPham['mo_ta']?></p>
                                         <form action="<?= BASE_URL . '?act=them-gio-hang'?>" method="post">
+                                            
                                             <div class="quantity-cart-box d-flex align-items-center">
                                                 <h6 class="option-title">Số lượng:</h6>
                                                 <div class="quantity">
@@ -211,20 +194,21 @@
                                                         </div>
                                                     </div>
                                                     <?php endforeach ?>
-                                                    <form action="#" class="review-form" method="post"></form>
-                                                    <div class="form-group row">
-                                                        <div class="col">
-                                                            <label class="col-form-label"><span class="text-danger">*</span>
-                                                                Viết đánh giá</label>
-                                                            <textarea class="form-control" required></textarea>
-                                                            
+                                                    <form action="<?= BASE_URL . '?act=them-binh-luan'?>" method="POST">
+                                                        <div class="form-group row">
+                                                            <div class="col">
+                                                                <label class="col-form-label"><span class="text-danger">*</span> Viết đánh giá</label>
+                                                                <input type="hidden" name="san_pham_id" value="<?= $sanPham['id']; ?>">
+
+                                                                <textarea class="form-control" name="noi_dung" required></textarea>
+                                                                
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                   
-                                                    <div class="buttons">
-                                                        <button class="btn btn-sqr" type="submit">Gửi</button>
-                                                    </div>
-                                                </form> <!-- end of review-form -->
+                                                        <div class="buttons">
+                                                            <button class="btn btn-sqr" type="submit">Gửi</button>
+                                                        </div>
+                                                    </form>
+
                                             </div>
                                         </div>
                                     </div>
