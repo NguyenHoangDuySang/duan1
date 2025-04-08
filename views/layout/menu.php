@@ -35,7 +35,7 @@
                                             <li><a href="<?= BASE_URL . '?act=san-pham'?>">Sản phẩm <i class="fa fa-angle-down"></i></a></li>
 
                                             <li><a href="#">Giới thiệu</a></li>
-                                            <li><a href="#">Liên hệ</a></li>
+                                            <li><a href="<?= BASE_URL . '?act=lien-he'?>">Liên hệ</a></li>
                                         </ul>
                                     </nav>
                                     <!-- main menu navbar end -->
@@ -70,10 +70,10 @@
                                             <?php 
                                                 if (!isset($_SESSION['user_client'])) { ?>
                                                     <li><a href="<?= BASE_URL . '?act=login' ?>">Đăng nhập</a></li>
+                                                    <li><a href="<?= BASE_URL . '?act=dang-ky' ?>">Đăng ký</a></li>
                                               <?php  } else{  ?>
-                                                
-                                                
-                                                <li><a href="my-account.html">Tài khoản</a></li>
+                                                <li><a href="<?= BASE_URL . '?act=tai-khoan' ?>">Tài khoản</a></li>
+                                                <li><a href="<?= BASE_URL . '?act=lich-su-mua-hang' ?>">Đơn hàng</a></li>
                                                 <?php }?>
                                             </ul>
                                         </li>
