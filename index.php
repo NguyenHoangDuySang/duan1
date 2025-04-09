@@ -63,7 +63,7 @@ match ($act) {
     'login' => (new HomeController())->formLogin(),
     'check-login' => (new HomeController())->postLogin(),
     'dang-ky' => (new HomeController())->dangKy(),
-    'tai-khoan' => (new HomeController())->taiKhoanCaNhan(),
+    'dang-xuat' => (new HomeController())->dangXuat(),
 
    
     

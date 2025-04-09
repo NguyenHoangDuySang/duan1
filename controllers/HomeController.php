@@ -113,7 +113,9 @@ public function addGioHang(){
             exit();
 
         }else{
-            var_dump('chua dang nhap');die;
+            // var_dump('chua dang nhap');die;
+            header("Location: " . BASE_URL . "?act=login");
+            exit();
         }
        
        
@@ -331,25 +333,17 @@ public function dangKy() {
 
 
 
-//// tai khoan ca nhan 
+//// dang xuat 
 
-public function taiKhoanCaNhan()
-{
-    require_once './models/TaiKhoan.php';
-    $model = new TaiKhoan();
 
-    $limit = 5; // số lượng tài khoản mỗi trang
-    $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
-    $start = ($page - 1) * $limit;
 
-    $totalTaiKhoan = $model->getSoLuongTaiKhoan();
-    $danhSachTaiKhoan = $model->getDanhSachTaiKhoanPhanTrang($start, $limit);
-    $totalPages = ceil($totalTaiKhoan / $limit);
-
-    require_once './views/taiKhoanCaNhan.php';
+public function dangXuat(){
+    if(isset($_SESSION['user_client'])){
+        unset($_SESSION['user_client']);
+        header("Location: " . BASE_URL );
+        exit();
+    }
 }
-
-
 ///   thanh toan 
 
 
@@ -372,7 +366,8 @@ public function thanhToan(){
         require_once './views/thanhToan.php';
 
     }else{
-        var_dump('chua dang nhap');die;
+        header("Location: " . BASE_URL . "?act=login");
+        exit();
     }
    
 }

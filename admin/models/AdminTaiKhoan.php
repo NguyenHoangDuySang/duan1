@@ -231,6 +231,24 @@ class AdminTaiKhoan{
         }
     }
 
+
+
+    /// 
+    public function getTongTaiKhoanKhachHang() {
+        try {
+            $sql = "SELECT COUNT(*) as tong_khach_hang FROM tai_khoans WHERE chuc_vu_id = 2";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute();
+            $result = $stmt->fetch();
+            return $result['tong_khach_hang'];
+        } catch (Exception $e) {
+            echo "Lỗi: " . $e->getMessage();
+            return 0;
+        }
+    }
+    
+    
+
    
     
 

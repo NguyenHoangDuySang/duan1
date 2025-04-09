@@ -72,7 +72,7 @@
                                                     <li><a href="<?= BASE_URL . '?act=login' ?>">Đăng nhập</a></li>
                                                     <li><a href="<?= BASE_URL . '?act=dang-ky' ?>">Đăng ký</a></li>
                                               <?php  } else{  ?>
-                                                <li><a href="<?= BASE_URL . '?act=tai-khoan' ?>">Tài khoản</a></li>
+                                                <li><a href="<?= BASE_URL . '?act=dang-xuat' ?>">Đăng xuất</a></li>
                                                 <li><a href="<?= BASE_URL . '?act=lich-su-mua-hang' ?>">Đơn hàng</a></li>
                                                 <?php }?>
                                             </ul>

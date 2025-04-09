@@ -341,7 +341,33 @@ public function updateTrangThaiBinhLuan($id,$trang_thai){
 
     ///
 
-
+    public function getTopSanPhamBanChay($limit = 5) {
+        try {
+            // Ép kiểu để đảm bảo an toàn
+            $limit = (int) $limit;
+    
+            $sql = "
+                SELECT 
+                    sp.id, sp.ten_san_pham, sp.gia_san_pham, sp.hinh_anh,
+                    SUM(ct.so_luong) as total_sold 
+                FROM chi_tiet_don_hangs ct
+                JOIN san_phams sp ON sp.id = ct.san_pham_id
+                GROUP BY sp.id
+                ORDER BY total_sold DESC
+                LIMIT $limit
+            ";
+    
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute();
+    
+            return $stmt->fetchAll();
+    
+        } catch (Exception $e) {
+            echo "Lỗi" . $e->getMessage();
+        }
+    }
+    
+    
 
 }
 ?>
