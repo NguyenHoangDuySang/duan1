@@ -52,5 +52,28 @@ class TaiKhoan{
         }
     }
 
+    /// tai khoan ca nhan \
+    // Lấy tổng số tài khoản
+public function getSoLuongTaiKhoan()
+{
+    $sql = "SELECT COUNT(*) FROM tai_khoans WHERE chuc_vu_id = 2";
+    $stmt = $this->conn->prepare($sql);
+    $stmt->execute();
+    return $stmt->fetchColumn();
+}
+
+// Lấy danh sách tài khoản theo trang
+public function getDanhSachTaiKhoanPhanTrang($start, $limit)
+{
+    $sql = "SELECT * FROM tai_khoans WHERE chuc_vu_id = 2 ORDER BY id DESC LIMIT :start, :limit";
+    $stmt = $this->conn->prepare($sql);
+    $stmt->bindValue(':start', $start, PDO::PARAM_INT);
+    $stmt->bindValue(':limit', $limit, PDO::PARAM_INT);
+    $stmt->execute();
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
+
+    
+
 }
     

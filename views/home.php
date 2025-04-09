@@ -1,4 +1,4 @@
- <?php require_once 'layout/header.php';?>
+<?php require_once 'layout/header.php';?>
   <!-- start Header Area -->
 <?php require_once 'layout/menu.php';?>
    <!-- end Header Area -->

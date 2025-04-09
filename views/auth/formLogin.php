@@ -1,195 +1,134 @@
-<!DOCTYPE html>
-<html lang="vi">
-<head>
-    <meta charset="UTF-8">
-    <title>Đăng nhập người dùng</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-    
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-        }
+<?php require_once 'views/layout/header.php';?>
+  <!-- start Header Area -->
+<?php require_once 'views/layout/menu.php';?>
+   <!-- end Header Area -->
+<style>
+  /* Ảnh lớn hiển thị chính */
+.product-large-slider .pro-large-img img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;  /* Đảm bảo ảnh vừa khung và không bị méo */
+    border-radius: 8px;
+}
 
-        .back-home {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            background: rgba(255, 255, 255, 0.15);
-            color: white;
-            text-decoration: none;
-            padding: 8px 14px;
-            border-radius: 8px;
-            font-size: 14px;
-            transition: background 0.3s ease;
-        }
+/* Ảnh nhỏ bên dưới (thumbnail) */
+.pro-nav-thumb img {
+    width: 100%;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 6px;
+    transition: transform 0.3s ease, box-shadow 0.3s;
+}
 
-        .back-home:hover {
-            background: rgba(255, 255, 255, 0.3);
-        }
+.pro-nav-thumb img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    cursor: pointer;
+}
 
-        .login-container {
-            background: #ffffff;
-            border-radius: 16px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
-            padding: 40px;
-            width: 100%;
-            max-width: 420px;
-            animation: fadeInUp 0.8s ease;
-        }
 
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
+.product-large-slider + .pro-nav {
+    margin-top: 100px !important;
+}
 
-        .login-container h2 {
-            text-align: center;
-            margin-bottom: 10px;
-            color: #5a67d8;
-        }
+.product-carousel-4 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: stretch; /* Đảm bảo các div có chiều cao bằng nhau */
+}
 
-        .login-container .form-group {
-            margin-bottom: 20px;
-        }
+.product-item {
+    flex: 1 1 calc(25% - 10px); /* Chia đều 4 cột */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 10px;
+    background: #fff;
+    height: 100%;
+}
 
-        .login-container input[type="email"],
-        .login-container input[type="password"] {
-            width: 100%;
-            padding: 12px 15px;
-            border: 1px solid #ccc;
-            border-radius: 10px;
-            font-size: 15px;
-            background-color: #f0f4ff;
-        }
+.product-thumb {
+    width: 100%;
+    height: 250px; /* Cố định chiều cao ảnh */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    background: #f8f8f8;
+    border-radius: 8px;
+}
 
-        .login-container input:focus {
-            border-color: #5a67d8;
-            outline: none;
-            box-shadow: 0 0 10px rgba(90, 103, 216, 0.2);
-        }
+.product-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Giữ nguyên tỉ lệ ảnh mà không bị méo */
+}
 
-        .login-container .btn {
-            width: 100%;
-            padding: 12px;
-            background: linear-gradient(to right, #667eea, #764ba2);
-            border: none;
-            border-radius: 10px;
-            color: white;
-            font-size: 16px;
-            font-weight: bold;
-            transition: 0.3s ease;
-            cursor: pointer;
-        }
+.product-caption {
+    flex-grow: 1;
+    text-align: center;
+    padding: 10px;
+}
+</style>
 
-        .login-container .btn:hover {
-            background: linear-gradient(to right, #5a67d8, #6b46c1);
-            box-shadow: 0 8px 20px rgba(90, 103, 216, 0.3);
-        }
 
-        .login-container .extra {
-            text-align: center;
-            margin-top: 15px;
-            font-size: 14px;
-        }
 
-        .login-container .extra a {
-            color: #764ba2;
-            text-decoration: none;
-        }
+  
+<main>
+      
 
-        .social-login {
-            margin-top: 30px;
-        }
+        <!-- login register wrapper start -->
+        <div class="login-register-wrapper section-padding">
+            <div class="container" style="max-width: 40vw;">
+                <div class="member-area-from-wrap">
+                    <div class="row">
+                        <!-- Login Content Start -->
+                        <div class="col-lg-12">
+                            <div class="login-reg-form-wrap">
+                                <h5 class="text-center">Đăng nhập</h5>
+                                <h5 class="text-primary text-center">Chào mừng trở lại !</h5>
+                                    <?php if (isset($_SESSION['error'])) { ?>
+                                        <div class="text-danger text-center"><?= $_SESSION['error'] ?></div>
+                                    <?php } else { ?>
+                                        <div class="login-box-msg text-center">Vui lòng đăng nhập để tiếp tục!</div>
+                                    <?php } ?>
+                                <form action="<?= BASE_URL . '?act=check-login' ?>" method="post">
+                                    <div class="single-input-item">
+                                        <input type="email" placeholder="Nhập email" name="email" required />
+                                    </div>
+                                    <div class="single-input-item">
+                                        <input type="password" placeholder="Nhập password" name="password" required />
+                                    </div>
+                                    <div class="single-input-item">
+                                        <div class="login-reg-form-meta d-flex align-items-center justify-content-between">
+                                           
+                                            <a href="#" class="forget-pwd">Quên mật khẩu</a>
+                                        </div>
+                                    </div>
+                                    <div class="single-input-item">
+                                        <button class="btn btn-sqr">Đăng nhập</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <!-- Login Content End -->
 
-        .social-btn {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            margin-bottom: 15px;
-            width: 100%;
-            padding: 10px;
-            border-radius: 8px;
-            font-weight: bold;
-            font-size: 14px;
-            transition: 0.3s ease;
-            cursor: pointer;
-            border: none;
-        }
-
-        .btn-facebook {
-            background-color: #3b5998;
-            color: white;
-        }
-
-        .btn-facebook:hover {
-            background-color: #2d4373;
-        }
-
-        .btn-google {
-            background-color: #dd4b39;
-            color: white;
-        }
-
-        .btn-google:hover {
-            background-color: #c23321;
-        }
-
-        .social-btn i {
-            font-size: 18px;
-        }
-    </style>
-</head>
-<body>
-
-<a class="back-home" href="<?= BASE_URL ?>">← Quay lại trang chủ</a>
-
-<div class="login-container">
-    <h2>Đăng nhập người dùng</h2>
-    <h5 class="text-center text-muted mb-3">Chào mừng trở lại!</h5>
-
-    <?php if (isset($_SESSION['error'])) { ?>
-        <div class="text-danger text-center"><?= $_SESSION['error'] ?></div>
-    <?php } else { ?>
-        <div class="text-center mb-3 text-muted">Vui lòng đăng nhập để tiếp tục!</div>
-    <?php } ?>
-
-    <form action="<?= BASE_URL . '?act=check-login' ?>" method="post">
-        <div class="form-group">
-            <input type="email" placeholder="Email của bạn" name="email" required />
+                        <!-- Register Content Start -->
+                       
+                        <!-- Register Content End -->
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="form-group">
-            <input type="password" placeholder="Mật khẩu" name="password" required />
-        </div>
-        <button class="btn" type="submit">Đăng nhập</button>
-    </form>
+        <!-- login register wrapper end -->
+    </main>
+    
 
-    <div class="extra">
-        <a href="#">Quên mật khẩu?</a>
-    </div>
+    <!-- offcanvas mini cart start -->
+   
+    <!-- offcanvas mini cart end -->
 
-    <div class="social-login">
-        <p class="text-center mt-4 mb-2">Hoặc đăng nhập bằng</p>
-        <button class="social-btn btn-facebook"><i class="fab fa-facebook-f"></i> Đăng nhập bằng Facebook</button>
-        <button class="social-btn btn-google"><i class="fab fa-google-plus-g"></i> Đăng nhập bằng Google</button>
-    </div>
-</div>
-
-</body>
-</html>
+   <?php require_once 'views/layout/footer.php'; ?>

@@ -79,23 +79,7 @@
 
 <main>
         <!-- breadcrumb area start -->
-        <div class="breadcrumb-area">
-            <div class="container">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="breadcrumb-wrap">
-                            <nav aria-label="breadcrumb">
-                                <ul class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="index.html"><i class="fa fa-home"></i></a></li>
-                                    <li class="breadcrumb-item"><a href="shop.html">shop</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page">cart</li>
-                                </ul>
-                            </nav>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+      
         <!-- breadcrumb area end -->
 
         <!-- cart main wrapper start -->
@@ -201,7 +185,7 @@
                                         </table>
                                     </div>
                                 </div>
-                                <a href="checkout.html" class="btn btn-sqr d-block">Thanh toán</a>
+                                <a href="<?= BASE_URL . '?act=thanh-toan' ?>" class="btn btn-sqr d-block" style="background-color: red;">Thanh toán</a>
                             </div>
                         </div>
                     </div>
