@@ -113,7 +113,9 @@ public function addGioHang(){
             exit();
 
         }else{
-            var_dump('chua dang nhap');die;
+            // var_dump('chua dang nhap');die;
+            header("Location: " . BASE_URL . "?act=login");
+            exit();
         }
        
        
@@ -331,25 +333,17 @@ public function dangKy() {
 
 
 
-//// tai khoan ca nhan 
+//// dang xuat 
 
-public function taiKhoanCaNhan()
-{
-    require_once './models/TaiKhoan.php';
-    $model = new TaiKhoan();
 
-    $limit = 5; // số lượng tài khoản mỗi trang
-    $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
-    $start = ($page - 1) * $limit;
 
-    $totalTaiKhoan = $model->getSoLuongTaiKhoan();
-    $danhSachTaiKhoan = $model->getDanhSachTaiKhoanPhanTrang($start, $limit);
-    $totalPages = ceil($totalTaiKhoan / $limit);
-
-    require_once './views/taiKhoanCaNhan.php';
+public function dangXuat(){
+    if(isset($_SESSION['user_client'])){
+        unset($_SESSION['user_client']);
+        header("Location: " . BASE_URL );
+        exit();
+    }
 }
-
-
 ///   thanh toan 
 
 
@@ -372,7 +366,8 @@ public function thanhToan(){
         require_once './views/thanhToan.php';
 
     }else{
-        var_dump('chua dang nhap');die;
+        header("Location: " . BASE_URL . "?act=login");
+        exit();
     }
    
 }
@@ -551,12 +546,6 @@ public function lichSuMuaHang(){
         }
 
 ///
-
-
-
-
-
-
 public function logout() {
     unset($_SESSION['tai-khoan']);
     session_unset();
@@ -565,49 +554,6 @@ public function logout() {
     header("Location: index.php");
     exit();
 }
-
-
-public function timKiemSanPham() {
-    $tuKhoa = $_POST['tu_khoa'] ?? '';
-
-    // Nếu từ khóa rỗng thì quay về trang chủ
-    if (trim($tuKhoa) === '') {
-        header("Location: " . BASE_URL);
-        exit;
-    }
-
-    $sanPhamModel = new SanPham();
-    $listSanPham = $sanPhamModel->timKiemSanPham($tuKhoa);
-
-    if (!empty($listSanPham)) {
-        // Lấy sản phẩm đầu tiên và chuyển đến trang chi tiết
-        $idSanPham = $listSanPham[0]['id'];
-        header("Location: " . BASE_URL . "?act=chi-tiet-san-pham&id_san_pham=" . $idSanPham);
-        exit;
-    } else {
-        // Không tìm thấy sản phẩm nào → có thể đưa ra trang thông báo hoặc về trang chủ
-        echo "<script>alert('Không tìm thấy sản phẩm phù hợp'); window.location.href = '" . BASE_URL . "';</script>";
-        exit;
-    }
-}
-
-
-public function goiYSanPham() {
-    $tuKhoa = $_POST['tu_khoa'] ?? '';
-
-    if (trim($tuKhoa) === '') {
-        echo json_encode([]);
-        exit;
-    }
-
-    $sanPhamModel = new SanPham();
-    $listSanPham = $sanPhamModel->timKiemSanPham($tuKhoa);
-
-    header('Content-Type: application/json');
-    echo json_encode($listSanPham);
-    exit;
-}
-
 
 
 

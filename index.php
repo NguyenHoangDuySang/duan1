@@ -1,4 +1,4 @@
-<?php
+<?php 
 session_start();
 // $act = $_GET['act'] ?? '/';
 // if ($act !== 'login' && $act !== 'check-login' && $act !== 'logout') {
@@ -37,7 +37,7 @@ match ($act) {
     'lien-he' => (new HomeController())->lienHe(),
     'send-contact' => (new HomeController())->sendContact(),
     'them-binh-luan' => (new HomeController())->themBinhLuan(),
-
+    
 
 
     /// route thanh toan
@@ -63,11 +63,10 @@ match ($act) {
     'login' => (new HomeController())->formLogin(),
     'check-login' => (new HomeController())->postLogin(),
     'dang-ky' => (new HomeController())->dangKy(),
-    'tai-khoan' => (new HomeController())->taiKhoanCaNhan(),
-
-
     'logout-client' => (new HomeController())->logout(),
-    'tim-kiem-san-pham' => (new HomeController())->timKiemSanPham(),
-    'goi-y-san-pham' => (new HomeController())->goiYSanPham(),
 
+   
+    
+
+    
 };
