@@ -66,7 +66,9 @@ match ($act) {
     'dang-xuat' => (new HomeController())->dangXuat(),
 
    
-    
+    /// tim kiem 
+    'tim-kiem-san-pham' => (new HomeController())->timKiemSanPham(),
+    'goi-y-san-pham' => (new HomeController())->goiYSanPham(),
 
     
 };

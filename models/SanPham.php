@@ -134,7 +134,14 @@ class SanPham{
         }
     }
     
-    
+    /// tim kiem 
+    public function timKiemSanPham($keyword)
+    {
+        $sql = "SELECT * FROM san_phams WHERE ten_san_pham LIKE ?";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute(["%$keyword%"]);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
 
 
 }
