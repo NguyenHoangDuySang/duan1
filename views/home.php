@@ -1,3 +1,24 @@
+ 
+ <?php
+if (session_status() == PHP_SESSION_NONE) session_start();
+
+// Gọi các model (dùng đường dẫn tương đối vì bạn không dùng autoload)
+require_once __DIR__ . '/../models/GioHang.php';
+require_once __DIR__ . '/../models/TaiKhoan.php';
+
+$modelGioHang = new GioHang();
+$modelTaiKhoan = new TaiKhoan();
+
+$chiTietGioHang = [];
+
+if (isset($_SESSION['user_client'])) {
+    $user = $modelTaiKhoan->getTaiKhoanFromEmail($_SESSION['user_client']);
+    $gioHang = $modelGioHang->getGioHangFromUser($user['id']);
+    if ($gioHang) {
+        $chiTietGioHang = $modelGioHang->getDetailGioHang($gioHang['id']);
+    }
+}
+?>
  <?php require_once 'layout/header.php';?>
   <!-- start Header Area -->
 <?php require_once 'layout/menu.php';?>

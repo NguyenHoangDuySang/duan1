@@ -179,8 +179,17 @@ public function capNhatGioHang() {
             $soLuongs = $_POST['so_luong'] ?? [];
 
             foreach ($soLuongs as $sanPhamId => $soLuong) {
+                // ✅ Lấy thông tin sản phẩm để kiểm tra tồn kho
+                $sanPham = $this->modelSanPham->getDetailSanPham($sanPhamId);
+                $soLuongTonKho = $sanPham['so_luong'];
+
+                if ($soLuong > $soLuongTonKho) {
+                    $_SESSION['error'] = "Sản phẩm '{$sanPham['ten_san_pham']}' chỉ còn {$soLuongTonKho} sản phẩm trong kho!";
+                    header("Location: " . BASE_URL . "?act=gio-hang");
+                    exit();
+                }
+
                 if ($soLuong <= 0) {
-                    // Xóa sản phẩm khỏi giỏ nếu số lượng <= 0
                     $this->modelGioHang->xoaSanPham($gioHang['id'], $sanPhamId);
                 } else {
                     $this->modelGioHang->updateSoLuong($gioHang['id'], $sanPhamId, $soLuong);

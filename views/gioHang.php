@@ -90,6 +90,12 @@
                         <div class="col-lg-12">
                             <!-- Cart Table Area -->
                             <form action="?act=cap-nhat-gio-hang" method="post">
+                            <?php if (isset($_SESSION['error'])): ?>
+                                <div class="alert alert-danger">
+                                    <?= $_SESSION['error']; unset($_SESSION['error']); ?>
+                                </div>
+                            <?php endif; ?>
+
                             <!-- cart-table table here -->
                             <div class="cart-table table-responsive">
                                 <table class="table table-bordered">
