@@ -60,9 +60,11 @@ class AdminSanPhamControllers{
             if (empty($gia_khuyen_mai)) {
                 $errors['gia_khuyen_mai'] = 'Giá khuyến mãi sản phẩm không được để trống';
             }
-            if (empty($so_luong)) {
-                $errors['so_luong'] = 'Số lượng sản phẩm không được để trống';
+            if ($so_luong === '' || !is_numeric($so_luong) || $so_luong < 0) {
+                $errors['so_luong'] = 'Số lượng phải là số không âm';
             }
+            
+            
             if (empty($ngay_nhap)) {
                 $errors['ngay_nhap'] = 'Ngày nhập sản phẩm không được để trống';
             }
@@ -183,9 +185,11 @@ class AdminSanPhamControllers{
         if (empty($gia_khuyen_mai)) {
             $errors['gia_khuyen_mai'] = 'Giá khuyến mãi sản phẩm không được để trống';
         }
-        if (empty($so_luong)) {
-            $errors['so_luong'] = 'Số lượng sản phẩm không được để trống';
+        /// o dau
+        if ($so_luong === '' || !is_numeric($so_luong) || $so_luong < 0) {
+            $errors['so_luong'] = 'Số lượng phải là số không âm';
         }
+        
         if (empty($ngay_nhap)) {
             $errors['ngay_nhap'] = 'Ngày nhập sản phẩm không được để trống';
         }
