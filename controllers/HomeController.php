@@ -26,6 +26,7 @@ class HomeController
     $sanPham = $this->modelSanPham->getDetailSanPham($id);
     $listAnhSanPham = $this->modelSanPham->getListAnhSanPham($id);
     $listBinhLuan = $this->modelSanPham->getBinhLuanFromSanPham($id);
+    $listSanPhamCungDanhMuc = $this->modelSanPham->getListSanPhamDanhMuc($sanPham['danh_muc_id']);
 
     // Kiểm tra nếu sản phẩm tồn tại
     if ($sanPham) {
@@ -77,27 +78,47 @@ public function postLogin(){
 
 /// logout  adnin
 
-public function addGioHang(){
+public function addGioHang() {
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         if (isset($_SESSION['user_client'])) {
             $mail = $this->modelTaiKhoan->getTaiKhoanFromEmail($_SESSION['user_client']);
-            // lay du lieu gio hang cua nguoi dung 
-            // var_dump($mail['id']);die;
             $gioHang = $this->modelGioHang->getGioHangFromUser($mail['id']);
+
             if (!$gioHang) {
                 $gioHangId = $this->modelGioHang->addGioHang($mail['id']);
-                $gioHang = ['id'=>$gioHangId];
-                $chiTietGioHang = $this->modelGioHang->getDetailGioHang($gioHang['id']);
-
-            }else{
-                $chiTietGioHang = $this->modelGioHang->getDetailGioHang($gioHang['id']);
+                $gioHang = ['id' => $gioHangId];
             }
+
+            $chiTietGioHang = $this->modelGioHang->getDetailGioHang($gioHang['id']);
 
             $san_pham_id = $_POST['san_pham_id'];
             $so_luong = $_POST['so_luong'];
 
+            // ✅ Lấy thông tin sản phẩm để kiểm tra tồn kho
+            $sanPham = $this->modelSanPham->getDetailSanPham($san_pham_id);
+            $soLuongTonKho = $sanPham['so_luong'];
+
+            // ✅ Tính tổng số lượng hiện tại trong giỏ + số lượng mới muốn thêm
+            $soLuongHienTaiTrongGio = 0;
+            foreach ($chiTietGioHang as $detail) {
+                if ($detail['san_pham_id'] == $san_pham_id) {
+                    $soLuongHienTaiTrongGio = $detail['so_luong'];
+                    break;
+                }
+            }
+
+            $tongSoLuong = $soLuongHienTaiTrongGio + $so_luong;
+
+            // ✅ Kiểm tra nếu vượt quá tồn kho thì không cho thêm
+            if ($tongSoLuong > $soLuongTonKho) {
+                $_SESSION['error'] = "Số lượng vượt quá tồn kho!";
+                header("Location: " . BASE_URL . "?act=chi-tiet-san-pham&id_san_pham=$san_pham_id");
+                exit();
+            }
+
+            // ✅ Nếu không vượt, thêm hoặc cập nhật số lượng
             $checkSanPham = false;
-            foreach($chiTietGioHang as $detail){
+            foreach ($chiTietGioHang as $detail) {
                 if ($detail['san_pham_id'] == $san_pham_id) {
                     $newSoLuong = $detail['so_luong'] + $so_luong;
                     $this->modelGioHang->updateSoLuong($gioHang['id'], $san_pham_id, $newSoLuong);
@@ -105,20 +126,20 @@ public function addGioHang(){
                     break;
                 }
             }
+
             if (!$checkSanPham) {
                 $this->modelGioHang->addDetailGioHang($gioHang['id'], $san_pham_id, $so_luong);
             }
 
             header("Location: " . BASE_URL . '?act=gio-hang');
             exit();
-
-        }else{
-            var_dump('chua dang nhap');die;
+        } else {
+            header("Location: " . BASE_URL . "?act=login");
+            exit();
         }
-       
-       
     }
 }
+
 
 
 ////
@@ -158,8 +179,17 @@ public function capNhatGioHang() {
             $soLuongs = $_POST['so_luong'] ?? [];
 
             foreach ($soLuongs as $sanPhamId => $soLuong) {
+                // ✅ Lấy thông tin sản phẩm để kiểm tra tồn kho
+                $sanPham = $this->modelSanPham->getDetailSanPham($sanPhamId);
+                $soLuongTonKho = $sanPham['so_luong'];
+
+                if ($soLuong > $soLuongTonKho) {
+                    $_SESSION['error'] = "Sản phẩm '{$sanPham['ten_san_pham']}' chỉ còn {$soLuongTonKho} sản phẩm trong kho!";
+                    header("Location: " . BASE_URL . "?act=gio-hang");
+                    exit();
+                }
+
                 if ($soLuong <= 0) {
-                    // Xóa sản phẩm khỏi giỏ nếu số lượng <= 0
                     $this->modelGioHang->xoaSanPham($gioHang['id'], $sanPhamId);
                 } else {
                     $this->modelGioHang->updateSoLuong($gioHang['id'], $sanPhamId, $soLuong);
@@ -331,25 +361,17 @@ public function dangKy() {
 
 
 
-//// tai khoan ca nhan 
+//// dang xuat 
 
-public function taiKhoanCaNhan()
-{
-    require_once './models/TaiKhoan.php';
-    $model = new TaiKhoan();
 
-    $limit = 5; // số lượng tài khoản mỗi trang
-    $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
-    $start = ($page - 1) * $limit;
 
-    $totalTaiKhoan = $model->getSoLuongTaiKhoan();
-    $danhSachTaiKhoan = $model->getDanhSachTaiKhoanPhanTrang($start, $limit);
-    $totalPages = ceil($totalTaiKhoan / $limit);
-
-    require_once './views/taiKhoanCaNhan.php';
+public function dangXuat(){
+    if(isset($_SESSION['user_client'])){
+        unset($_SESSION['user_client']);
+        header("Location: " . BASE_URL );
+        exit();
+    }
 }
-
-
 ///   thanh toan 
 
 
@@ -372,7 +394,8 @@ public function thanhToan(){
         require_once './views/thanhToan.php';
 
     }else{
-        var_dump('chua dang nhap');die;
+        header("Location: " . BASE_URL . "?act=login");
+        exit();
     }
    
 }
@@ -550,8 +573,50 @@ public function lichSuMuaHang(){
             }
         }
 
-///
+///  tim kiem 
  
+public function timKiemSanPham() {
+    $tuKhoa = $_POST['tu_khoa'] ?? '';
+
+    // Nếu từ khóa rỗng thì quay về trang chủ
+    if (trim($tuKhoa) === '') {
+        header("Location: " . BASE_URL);
+        exit;
+    }
+
+    $sanPhamModel = new SanPham();
+    $listSanPham = $sanPhamModel->timKiemSanPham($tuKhoa);
+
+    if (!empty($listSanPham)) {
+        // Lấy sản phẩm đầu tiên và chuyển đến trang chi tiết
+        $idSanPham = $listSanPham[0]['id'];
+        header("Location: " . BASE_URL . "?act=chi-tiet-san-pham&id_san_pham=" . $idSanPham);
+        exit;
+    } else {
+        // Không tìm thấy sản phẩm nào → có thể đưa ra trang thông báo hoặc về trang chủ
+        echo "<script>alert('Không tìm thấy sản phẩm phù hợp'); window.location.href = '" . BASE_URL . "';</script>";
+        exit;
+    }
+}
+
+
+public function goiYSanPham() {
+    $tuKhoa = $_POST['tu_khoa'] ?? '';
+
+    if (trim($tuKhoa) === '') {
+        echo json_encode([]);
+        exit;
+    }
+
+    $sanPhamModel = new SanPham();
+    $listSanPham = $sanPhamModel->timKiemSanPham($tuKhoa);
+
+    header('Content-Type: application/json');
+    echo json_encode($listSanPham);
+    exit;
+}
+
+
 
 
 

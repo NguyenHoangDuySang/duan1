@@ -49,10 +49,15 @@
                             <div class="header-right d-flex align-items-center justify-content-xl-between justify-content-lg-end">
                                 <div class="header-search-container">
                                     <button class="search-trigger d-xl-none d-lg-block"><i class="pe-7s-search"></i></button>
-                                    <form class="header-search-box d-lg-none d-xl-block">
-                                        <input type="text" placeholder="Tìm kiếm" class="header-search-field">
-                                        <button class="header-search-btn"><i class="pe-7s-search"></i></button>
-                                    </form>
+                                    <form action="index.php" method="GET" id="search-form" class="header-search-box d-lg-none d-xl-block" autocomplete="off">
+                                <input type="hidden" name="act" value="tim-kiem-san-pham">
+                                <input type="text" id="tu_khoa" name="tu_khoa" placeholder="Tìm kiếm" class="header-search-field" required>
+
+                                <button type="button" class="header-search-btn" disabled style="cursor: not-allowed;">
+                                    <i class="pe-7s-search"></i>
+                                </button>
+                                <div id="suggestions"></div>
+                            </form>
                                 </div>
                                 <div class="header-configure-area">
                                     <ul class="nav justify-content-end">
@@ -72,7 +77,7 @@
                                                     <li><a href="<?= BASE_URL . '?act=login' ?>">Đăng nhập</a></li>
                                                     <li><a href="<?= BASE_URL . '?act=dang-ky' ?>">Đăng ký</a></li>
                                               <?php  } else{  ?>
-                                                <li><a href="<?= BASE_URL . '?act=tai-khoan' ?>">Tài khoản</a></li>
+                                                <li><a href="<?= BASE_URL . '?act=dang-xuat' ?>">Đăng xuất</a></li>
                                                 <li><a href="<?= BASE_URL . '?act=lich-su-mua-hang' ?>">Đơn hàng</a></li>
                                                 <?php }?>
                                             </ul>
@@ -110,4 +115,58 @@
     </header>
     <!-- end Header Area -->
 
-    
+    <!-- AJAX Search Script -->
+<script>
+    document.getElementById('tu_khoa').addEventListener('keyup', function() {
+        const tuKhoa = this.value;
+        const suggestionsBox = document.getElementById('suggestions');
+
+        if (tuKhoa.length === 0) {
+            suggestionsBox.innerHTML = '';
+            return;
+        }
+
+        fetch('<?= BASE_URL ?>?act=goi-y-san-pham', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                body: 'tu_khoa=' + encodeURIComponent(tuKhoa)
+            })
+            .then(res => res.json())
+            .then(data => {
+                suggestionsBox.innerHTML = '';
+                data.forEach(item => {
+                    const div = document.createElement('div');
+                    div.textContent = item.ten_san_pham;
+                    div.addEventListener('click', () => {
+                        window.location.href = `<?= BASE_URL ?>?act=chi-tiet-san-pham&id_san_pham=${item.id}`;
+                    });
+                    suggestionsBox.appendChild(div);
+                });
+            });
+    });
+
+    document.addEventListener("click", function(e) {
+        const suggestions = document.getElementById('suggestions');
+        const input = document.getElementById('tu_khoa');
+        if (!suggestions.contains(e.target) && e.target !== input) {
+            suggestions.innerHTML = '';
+        }
+    });
+
+
+    // Ngăn form gửi đi khi ấn Enter
+    document.getElementById('search-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+    });
+
+    document.getElementById('tu_khoa').addEventListener('keydown', function(e) {
+        if (e.key === 'Enter') {
+            e.preventDefault();
+        }
+    });
+
+
+
+</script>

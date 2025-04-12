@@ -384,6 +384,33 @@ class AdminTaiKhoanControllers{
         }
 
 
+        ////
+
+       
+public function baoCaoThongKe() {
+    // Doanh thu
+    $totalRevenue = $this->modelDonHang->getTongDoanhThu();
+
+    // Tổng đơn hàng
+    $totalOrders = $this->modelDonHang->getTongSoDonHang();
+
+    // Đơn hàng thành công
+    $completedOrders = $this->modelDonHang->getTongDonHangTheoTrangThai(9);
+
+    // Đơn hàng bị hủy
+    $completedOrdersCancelled = $this->modelDonHang->getTongDonHangTheoTrangThai(11);
+
+    // Số khách hàng đã mua hàng
+    $countUniqueBuyers = $this->modelDonHang->getSoLuongKhachHangMuaHang();
+
+    // Top sản phẩm bán chạy
+    $topProducts = $this->modelSanPham->getTopSanPhamBanChay(5);
+
+    // Load view
+    require_once './views/home.php';
+}
+
+
 
 }
 ?>

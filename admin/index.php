@@ -35,7 +35,7 @@ match ($act) {
     // '/'                 => (new DashboardController())->index(),
 
     // Route bao cao thong ke => trang chu 
-    '/' => (new AdminDashboardController())->home(),
+    '/' => (new AdminTaiKhoanControllers())->baoCaoThongKe(),
 
     // Route danh muc 
     'danh-muc' => (new AdminDanhMucControllers())->danhSachDanhMuc(),

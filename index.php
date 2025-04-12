@@ -63,10 +63,12 @@ match ($act) {
     'login' => (new HomeController())->formLogin(),
     'check-login' => (new HomeController())->postLogin(),
     'dang-ky' => (new HomeController())->dangKy(),
-    'tai-khoan' => (new HomeController())->taiKhoanCaNhan(),
+    'dang-xuat' => (new HomeController())->dangXuat(),
 
    
-    
+    /// tim kiem 
+    'tim-kiem-san-pham' => (new HomeController())->timKiemSanPham(),
+    'goi-y-san-pham' => (new HomeController())->goiYSanPham(),
 
     
 };

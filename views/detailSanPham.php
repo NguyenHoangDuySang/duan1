@@ -1,3 +1,24 @@
+<?php
+if (session_status() == PHP_SESSION_NONE) session_start();
+
+// Gọi các model (dùng đường dẫn tương đối vì bạn không dùng autoload)
+require_once __DIR__ . '/../models/GioHang.php';
+require_once __DIR__ . '/../models/TaiKhoan.php';
+
+$modelGioHang = new GioHang();
+$modelTaiKhoan = new TaiKhoan();
+
+$chiTietGioHang = [];
+
+if (isset($_SESSION['user_client'])) {
+    $user = $modelTaiKhoan->getTaiKhoanFromEmail($_SESSION['user_client']);
+    $gioHang = $modelGioHang->getGioHangFromUser($user['id']);
+    if ($gioHang) {
+        $chiTietGioHang = $modelGioHang->getDetailGioHang($gioHang['id']);
+    }
+}
+?>
+
 <?php require_once 'layout/header.php';?>
   <!-- start Header Area -->
 <?php require_once 'layout/menu.php';?>
@@ -10,6 +31,16 @@
     object-fit: cover;  /* Đảm bảo ảnh vừa khung và không bị méo */
     border-radius: 8px;
 }
+
+.alert-danger {
+    background-color: #f8d7da;
+    color: #721c24;
+    padding: 12px 20px;
+    margin-top: 10px;
+    border-radius: 4px;
+    font-weight: bold;
+}
+
 
 /* Ảnh nhỏ bên dưới (thumbnail) */
 .pro-nav-thumb img {
@@ -95,6 +126,12 @@
                                                 
                                             </div>
                                         <?php endforeach ?>
+                                        <?php foreach($listSanPham as $key=>$sanPham): ?>
+                                            <div class="pro-large-img img-zoom">
+                                                <img src="<?= BASE_URL . $sanPham['hinh_anh']?>" alt="product-details" />
+                             
+                                            </div>
+                                         <?php endforeach ?>
                                         
                                     </div>
                                     <div class="pro-nav slick-row-10 slick-arrow-style">
@@ -136,6 +173,13 @@
                                             <span>Số lượng sản phẩm trong kho: <?= $sanPham['so_luong']?></span>
                                         </div>
                                         <p class="pro-desc"> <?= $sanPham['mo_ta']?></p>
+                                        <?php if (isset($_SESSION['error'])): ?>
+                                            <div class="alert alert-danger" role="alert">
+                                                <?= $_SESSION['error']; ?>
+                                            </div>
+                                            <?php unset($_SESSION['error']); ?>
+                                        <?php endif; ?>
+
                                         <form action="<?= BASE_URL . '?act=them-gio-hang'?>" method="post">
                                             
                                             <div class="quantity-cart-box d-flex align-items-center">

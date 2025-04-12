@@ -155,6 +155,58 @@ public function getDonHangFromKhachHang($id){
 
 
 
+////
+
+public function getTongDoanhThu() {
+    try {
+        $sql = "SELECT SUM(tong_tien) as total FROM don_hangs WHERE trang_thai_id = 9"; // 9 = thành công
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute();
+        return $stmt->fetch()['total'] ?? 0;
+    } catch (Exception $e) {
+        echo "Lỗi" . $e->getMessage();
+    }
+}
+
+
+public function getTongSoDonHang() {
+    try {
+        $sql = "SELECT COUNT(*) as total FROM don_hangs";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute();
+        return $stmt->fetch()['total'] ?? 0;
+    } catch (Exception $e) {
+        echo "Lỗi" . $e->getMessage();
+    }
+}
+
+
+/////
+
+
+public function getTongDonHangTheoTrangThai($trangThaiId) {
+    try {
+        $sql = "SELECT COUNT(*) as total FROM don_hangs WHERE trang_thai_id = :trang_thai_id";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute([':trang_thai_id' => $trangThaiId]);
+        return $stmt->fetch()['total'] ?? 0;
+    } catch (Exception $e) {
+        echo "Lỗi" . $e->getMessage();
+    }
+}
+
+
+/////
+public function getSoLuongKhachHangMuaHang() {
+    try {
+        $sql = "SELECT COUNT(DISTINCT tai_khoan_id) as total FROM don_hangs";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute();
+        return $stmt->fetch()['total'] ?? 0;
+    } catch (Exception $e) {
+        echo "Lỗi" . $e->getMessage();
+    }
+}
 
 
 
