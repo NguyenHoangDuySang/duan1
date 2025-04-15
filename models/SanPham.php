@@ -142,6 +142,23 @@ class SanPham{
         $stmt->execute(["%$keyword%"]);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+    
+
+    ///
+    public function updateSoLuongTonKho($sanPhamId, $soLuongMoi) {
+        try {
+            $sql = "UPDATE san_phams SET so_luong = :so_luong WHERE id = :id";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute([
+                ':so_luong' => $soLuongMoi,
+                ':id' => $sanPhamId
+            ]);
+        } catch (Exception $e) {
+            echo "Lỗi khi cập nhật số lượng tồn kho: " . $e->getMessage();
+        }
+    }
+    
+    
 
 
 }

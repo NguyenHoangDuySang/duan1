@@ -91,6 +91,7 @@
     <h4 style="font-size: 18px; font-weight: bold; border-bottom: 1px solid #ddd; padding: 8px 0; color: <?= $sanPham['trang_thai'] == 1 ? 'green' : 'red' ?>;">
         Trạng thái: <small><?= $sanPham['trang_thai'] == 1 ? 'Còn bán' : 'Dừng bán' ?></small>
     </h4>
+    
     <h4 style="font-size: 18px; font-style: italic; color: #666; padding: 8px 0;">
         Mô tả: <small><?= $sanPham['mo_ta'] ?></small>
     </h4>
