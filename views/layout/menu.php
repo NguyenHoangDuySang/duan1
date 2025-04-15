@@ -1,6 +1,39 @@
  <!-- Start Header Area -->
   <style>
-    
+    .header-search-box {
+        position: relative;
+        width: 100%;
+    }
+
+    .header-search-field {
+        width: 100%;
+        padding: 8px 100px 8px 12px;
+        border-radius: 25px;
+        border: 1px solid #ccc;
+        box-sizing: border-box;
+    }
+
+    #suggestions {
+    max-height: 300px; 
+    overflow-y: auto;
+    background: #fff;
+    border: 1px solid #ccc;
+    position: absolute;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    border-radius: 4px;
+    z-index: 10;
+}
+
+    #suggestions div {
+        padding: 8px 12px;
+        cursor: pointer;
+    }
+
+    #suggestions div:hover {
+        background-color: #f1f1f1;
+    }
   </style>
  <header class="header-area header-wide">
         <!-- main header start -->
@@ -54,7 +87,7 @@
                                 <input type="text" id="tu_khoa" name="tu_khoa" placeholder="Tìm kiếm" class="header-search-field" required>
 
                                 <button type="button" class="header-search-btn" disabled style="cursor: not-allowed;">
-                                    <i class="pe-7s-search"></i>
+                                   
                                 </button>
                                 <div id="suggestions"></div>
                             </form>
@@ -116,38 +149,56 @@
     <!-- end Header Area -->
 
     <!-- AJAX Search Script -->
+<!-- AJAX Search Script -->
 <script>
-    document.getElementById('tu_khoa').addEventListener('keyup', function() {
-        const tuKhoa = this.value;
-        const suggestionsBox = document.getElementById('suggestions');
+    const input = document.getElementById('tu_khoa');
+    const suggestionsBox = document.getElementById('suggestions');
 
-        if (tuKhoa.length === 0) {
+    input.addEventListener('keyup', () => {
+        const tuKhoa = input.value.trim();
+
+        if (!tuKhoa) {
             suggestionsBox.innerHTML = '';
             return;
         }
 
         fetch('<?= BASE_URL ?>?act=goi-y-san-pham', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded'
-                },
-                body: 'tu_khoa=' + encodeURIComponent(tuKhoa)
-            })
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            body: 'tu_khoa=' + encodeURIComponent(tuKhoa)
+        })
             .then(res => res.json())
             .then(data => {
-                suggestionsBox.innerHTML = '';
-                data.forEach(item => {
-                    const div = document.createElement('div');
-                    div.textContent = item.ten_san_pham;
-                    div.addEventListener('click', () => {
-                        window.location.href = `<?= BASE_URL ?>?act=chi-tiet-san-pham&id_san_pham=${item.id}`;
-                    });
-                    suggestionsBox.appendChild(div);
-                });
+                suggestionsBox.innerHTML = data.length
+                    ? data.map(sanPham => {
+                        const gia_san_pham = sanPham.gia_khuyen_mai && sanPham.gia_khuyen_mai < sanPham.gia_san_pham
+    ? `<span style="color:red; font-weight:bold;">${Number(sanPham.gia_khuyen_mai).toLocaleString()}₫</span> 
+       <del style="color:gray; margin-left: 6px;">${Number(sanPham.gia_san_pham).toLocaleString()}₫</del>`
+    : `<span style="font-weight:bold;">${Number(sanPham.gia_san_pham).toLocaleString()}₫</span>`;
+
+
+                            return `
+    <div onclick="window.location.href='<?= BASE_URL ?>?act=chi-tiet-san-pham&id_san_pham=${sanPham.id}'"
+        style="display: flex; align-items: center; padding: 4px 6px; cursor: pointer; border-bottom: 1px solid #eee;">
+        <img src="${sanPham.hinh_anh}" alt="${sanPham.ten_san_pham}" 
+            style="width: 38px; height: 38px; object-fit: cover; margin-right: 8px; border-radius: 3px;">
+        <div style="font-size: 13px; line-height: 1.3;">
+            <div style="font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 180px;">
+                ${sanPham.ten_san_pham}
+            </div>
+            <div>${gia_san_pham}</div>
+        </div>
+    </div>
+`;
+                    }).join('')
+                    : '<div style="padding: 8px;">Không có sản phẩm này</div>';
             });
     });
 
-    document.addEventListener("click", function(e) {
+
+    document.addEventListener("click", function (e) {
         const suggestions = document.getElementById('suggestions');
         const input = document.getElementById('tu_khoa');
         if (!suggestions.contains(e.target) && e.target !== input) {
@@ -156,17 +207,10 @@
     });
 
 
-    // Ngăn form gửi đi khi ấn Enter
-    document.getElementById('search-form').addEventListener('submit', function(e) {
+
+    document.getElementById('search-form').addEventListener('submit', function (e) {
         e.preventDefault();
     });
-
-    document.getElementById('tu_khoa').addEventListener('keydown', function(e) {
-        if (e.key === 'Enter') {
-            e.preventDefault();
-        }
-    });
-
 
 
 </script>

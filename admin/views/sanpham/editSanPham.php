@@ -85,9 +85,8 @@
               <div class="form-group">
                 <label for="so_luong">Số lượng</label>
                 <input type="number" id="so_luong" name="so_luong" class="form-control" value="<?= $sanPham['so_luong'] ?>">
-                    <?php if (isset($_SESSION['error']['so_luong'])) { ?>
-                        <p class="text-danger"><?= $_SESSION['error']['so_luong'] ?></p>
-                    <?php } ?>
+                   <!-- Đây là comment -->
+
               </div>
 
               <div class="form-group">

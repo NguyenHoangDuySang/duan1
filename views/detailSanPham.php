@@ -117,32 +117,38 @@ if (isset($_SESSION['user_client'])) {
                         <div class="product-details-inner">
                             <div class="row">
                                 <div class="col-lg-5">
-                                    <div class="product-large-slider">
-
-                                        <?php foreach($listAnhSanPham as $key=>$anhSanPham) : ?>
-                                            <div class="pro-large-img img-zoom">
-                                                <img src="<?= BASE_URL . $anhSanPham['link_hinh_anh']?>" alt="product-details" />
-                                               
-                                                
-                                            </div>
-                                        <?php endforeach ?>
-                                        <?php foreach($listSanPham as $key=>$sanPham): ?>
-                                            <div class="pro-large-img img-zoom">
-                                                <img src="<?= BASE_URL . $sanPham['hinh_anh']?>" alt="product-details" />
-                             
-                                            </div>
-                                         <?php endforeach ?>
-                                        
+                                    
+                                   <!-- Ảnh lớn: ảnh chính + các ảnh phụ -->
+                                <div class="product-large-slider">
+                                    <!-- Ảnh chính -->
+                                    <div class="pro-large-img img-zoom">
+                                        <img src="<?= BASE_URL . $sanPham['hinh_anh']?>" alt="product-main" />
                                     </div>
-                                    <div class="pro-nav slick-row-10 slick-arrow-style">
 
-                                        <?php foreach($listAnhSanPham as $key=>$anhSanPham) : ?>
-                                            <div class="pro-nav-thumb">
-                                                <img src="<?= BASE_URL . $anhSanPham['link_hinh_anh']?>" alt="product-details" />
-                                            </div>
-                                        <?php endforeach ?>
-                                        
+                                    <!-- Các ảnh phụ (album) -->
+                                    <?php foreach($listAnhSanPham as $anhSanPham): ?>
+                                        <div class="pro-large-img img-zoom">
+                                            <img src="<?= BASE_URL . $anhSanPham['link_hinh_anh']?>" alt="product-detail" />
+                                        </div>
+                                    <?php endforeach; ?>
+                                </div>
+
+                                <!-- Thumbnail chuyển ảnh -->
+                                <div class="pro-nav slick-row-10 slick-arrow-style">
+                                    <!-- Ảnh chính -->
+                                    <div class="pro-nav-thumb">
+                                        <img src="<?= BASE_URL . $sanPham['hinh_anh']?>" alt="product-thumb" />
                                     </div>
+
+                                    <!-- Các thumbnail -->
+                                    <?php foreach($listAnhSanPham as $anhSanPham): ?>
+                                        <div class="pro-nav-thumb">
+                                            <img src="<?= BASE_URL . $anhSanPham['link_hinh_anh']?>" alt="product-thumb" />
+                                        </div>
+                                    <?php endforeach; ?>
+                                </div>
+
+                                   
                                 </div>
                                 <div class="col-lg-7">
                                     <div class="product-details-des">
@@ -172,6 +178,7 @@ if (isset($_SESSION['user_client'])) {
                                             <i class="fa fa-check-circle"></i>
                                             <span>Số lượng sản phẩm trong kho: <?= $sanPham['so_luong']?></span>
                                         </div>
+                                       
                                         <p class="pro-desc"> <?= $sanPham['mo_ta']?></p>
                                         <?php if (isset($_SESSION['error'])): ?>
                                             <div class="alert alert-danger" role="alert">
@@ -180,20 +187,33 @@ if (isset($_SESSION['user_client'])) {
                                             <?php unset($_SESSION['error']); ?>
                                         <?php endif; ?>
 
-                                        <form action="<?= BASE_URL . '?act=them-gio-hang'?>" method="post">
+                                        <?php if ($sanPham['trang_thai'] == 1): ?>
+                                            <form action="<?= BASE_URL . '?act=them-gio-hang'?>" method="post">
+                                                <h4 style="font-size: 18px; font-weight: bold; border-bottom: 1px solid #ddd; padding: 8px 0; color: green;">
+                                                    Trạng thái: <small>Còn bán</small>
+                                                </h4>
+                                                <br>
+                                                <div class="quantity-cart-box d-flex align-items-center">
+                                                    <h6 class="option-title">Số lượng:</h6>
+                                                    <div class="quantity">
+                                                        <input type="hidden" name="san_pham_id" value="<?= $sanPham['id']; ?>">
+                                                        <div class="pro-qty"><input type="text" value="1" name="so_luong"></div>
+                                                    </div>
+                                                    <div class="action_link">
+                                                        <button class="btn btn-cart2">Thêm giỏ hàng </button>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        <?php else: ?>
+                                            <h4 style="font-size: 18px; font-weight: bold; border-bottom: 1px solid #ddd; padding: 8px 0; color: red;">
+                                                Trạng thái: <small>Ngừng bán</small>
+                                            </h4>
+                                            <br>
+                                            <p style="color:red; font-weight: bold;">Sản phẩm này hiện đã ngừng bán và không thể thêm vào giỏ hàng.</p>
                                             
-                                            <div class="quantity-cart-box d-flex align-items-center">
-                                                <h6 class="option-title">Số lượng:</h6>
-                                                <div class="quantity">
-                                                    <input type="hidden" name="san_pham_id" value="<?= $sanPham['id']; ?>">
-                                                    <div class="pro-qty"><input type="text" value="1" name="so_luong"></div>
-                                                </div>
-                                                
-                                                <div class="action_link">
-                                                    <button class="btn btn-cart2">Thêm giỏ hàng </button>
-                                                </div>
-                                            </div>
-                                        </form>
+                                            <br>
+                                        <?php endif; ?>
+
                                        
                                        
                                        
